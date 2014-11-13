@@ -3,5 +3,4 @@ class TalkConfigController < ApplicationController
     @tracks = TalkTrack.all
     @durations = TalkDuration.all
   end
-
 end
