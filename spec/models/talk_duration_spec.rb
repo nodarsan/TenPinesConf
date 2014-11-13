@@ -22,7 +22,7 @@ describe TalkDuration do
       newDuration = TalkDuration.new()
       expect(newDuration.valid?).to be_falsey
     end
-    it 'should not save new duration to DB' do
+    it 'should not save invalid duration to DB' do
       numberOfDurations = TalkDuration.all.size
       newDuration = TalkDuration.new()
 
