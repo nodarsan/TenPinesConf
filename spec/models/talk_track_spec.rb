@@ -11,8 +11,8 @@ describe TalkTrack do
 
     it 'should save new track to DB' do
       newTrack = TalkTrack.new(name: EXAMPLE_TRACK)
+      newTrack.save!
 
-      expect(newTrack.save).to be_truthy
       expect(TalkTrack.find_by_name(EXAMPLE_TRACK)).to eq(newTrack)
     end
   end
@@ -26,7 +26,7 @@ describe TalkTrack do
       numberOfTracks= TalkTrack.all.size
       newTrack = TalkTrack.new
 
-      expect(newTrack.save).to be_falsey
+      expect{newTrack.save!}.to raise_error ActiveRecord::RecordInvalid
       expect(TalkTrack.all.size).to eq(numberOfTracks)
     end
   end

@@ -11,8 +11,8 @@ describe TalkDuration do
 
     it 'should save new duration to DB' do
       newDuration = TalkDuration.new(value: EXAMPLE_DURATION)
+      newDuration.save!
 
-      expect(newDuration.save).to be_truthy
       expect(TalkDuration.find_by_value(EXAMPLE_DURATION)).to eq(newDuration)
     end
   end
@@ -26,7 +26,7 @@ describe TalkDuration do
       numberOfDurations = TalkDuration.all.size
       newDuration = TalkDuration.new()
 
-      expect(newDuration.save).to be_falsey
+      expect{newDuration.save!}.to raise_error ActiveRecord::RecordInvalid
       expect(TalkDuration.all.size).to eq(numberOfDurations)
     end
   end
