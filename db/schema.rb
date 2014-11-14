@@ -11,9 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111152932) do
+ActiveRecord::Schema.define(version: 20141114143641) do
 
   create_table "people", force: true do |t|
+    t.string   "name"
+    t.string   "mail"
+    t.string   "phone"
+    t.string   "country"
+    t.text     "bio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "speakers", force: true do |t|
     t.string   "name"
     t.string   "mail"
     t.string   "phone"
@@ -38,14 +48,14 @@ ActiveRecord::Schema.define(version: 20141111152932) do
   create_table "talks", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "person_id"
+    t.integer  "speaker_id"
     t.integer  "talk_track_id"
     t.integer  "talk_duration_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "talks", ["person_id"], name: "index_talks_on_person_id", using: :btree
+  add_index "talks", ["speaker_id"], name: "index_talks_on_speaker_id", using: :btree
   add_index "talks", ["talk_duration_id"], name: "index_talks_on_talk_duration_id", using: :btree
   add_index "talks", ["talk_track_id"], name: "index_talks_on_talk_track_id", using: :btree
 

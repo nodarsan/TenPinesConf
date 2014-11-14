@@ -3,9 +3,9 @@ class SpeakerMailer < ActionMailer::Base
 
   MAIL_SUBJECT = '10PinesConf - Gracias'
 
-  def thank_you_mail(person, talk)
-    @person = person
+  def thank_you_mail(speaker, talk)
+    @speaker = speaker
     @talk = talk
-    mail(to: @person.mail, subject: MAIL_SUBJECT)
+    mail(to: @speaker.mail, subject: MAIL_SUBJECT)
   end
 end
