@@ -1009,7 +1009,7 @@ angular.mock.dump = function(object) {
   ```js
     // testing controller
     describe('MyController', function() {
-       var $httpBackend, $rootScope, startController;
+       var $httpBackend, $rootScope, createController;
 
        beforeEach(inject(function($injector) {
          // Set up the mock http service responses
@@ -1022,7 +1022,7 @@ angular.mock.dump = function(object) {
          // The $controller service is used to create instances of controllers
          var $controller = $injector.get('$controller');
 
-         startController = function() {
+         createController = function() {
            return $controller('MyController', {'$scope' : $rootScope });
          };
        }));
@@ -1036,13 +1036,13 @@ angular.mock.dump = function(object) {
 
        it('should fetch authentication token', function() {
          $httpBackend.expectGET('/auth.py');
-         var controller = startController();
+         var controller = createController();
          $httpBackend.flush();
        });
 
 
        it('should send msg to server', function() {
-         var controller = startController();
+         var controller = createController();
          $httpBackend.flush();
 
          // now you don’t care about the authentication, but
@@ -1059,7 +1059,7 @@ angular.mock.dump = function(object) {
 
 
        it('should send auth header', function() {
-         var controller = startController();
+         var controller = createController();
          $httpBackend.flush();
 
          $httpBackend.expectPOST('/add-msg.py', undefined, function(headers) {
