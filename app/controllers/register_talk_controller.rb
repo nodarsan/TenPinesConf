@@ -3,7 +3,7 @@ class RegisterTalkController < ApplicationController
   def new
     talkRegister = TalkRegister.new
     talkRegister.register_new_talk(speaker_params, talk_params)
-    render plain: ''
+    render nothing: true
   end
 
   private

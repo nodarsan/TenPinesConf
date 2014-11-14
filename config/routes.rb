@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'talk_config' => 'talk_config#get'
   post 'register_talk' => 'register_talk#new'
+  get 'template/:name' => 'template#page'
 
 
 
