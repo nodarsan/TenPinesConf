@@ -2,9 +2,7 @@ class RegisterTalkController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def new
     talkRegister = TalkRegister.new
-
     talkRegister.register_new_talk(speaker_params, talk_params)
-
     render plain: ''
   end
 

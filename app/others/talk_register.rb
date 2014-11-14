@@ -1,7 +1,15 @@
 class TalkRegister
   def register_new_talk(speakerData, talkData)
+    newTalk = create_speaker_and_talk(speakerData, talkData)
+    SpeakerMailer.thank_you_mail(newTalk).deliver
+    OrganizerMailer.new_talk_mail(newTalk).deliver
+    newTalk
+  end
+
+  def create_speaker_and_talk(speakerData, talkData)
     speaker = Speaker.new(speakerData)
     speaker.save!
+
     talk = Talk.new
     talk.title = talkData[:title]
     talk.description = talkData[:description]
@@ -9,7 +17,6 @@ class TalkRegister
     talk.talk_duration = TalkDuration.find_by_value(talkData[:duration])
     talk.talk_track = TalkTrack.find(talkData[:track])
     talk.save!
-    SpeakerMailer.thank_you_mail(speaker, talk).deliver
-    OrganizerMailer.new_talk_mail(speaker, talk).deliver
+    talk
   end
 end
