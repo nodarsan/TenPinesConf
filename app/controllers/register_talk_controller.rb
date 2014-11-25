@@ -2,7 +2,9 @@ class RegisterTalkController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def new
     talkRegister = TalkRegister.new
-    talkRegister.register_new_talk(speaker_params, talk_params)
+    begin
+      talkRegister.register_new_talk(speaker_params, talk_params)
+    end
     render plain: ''
   end
 
@@ -15,3 +17,4 @@ class RegisterTalkController < ApplicationController
     params.require(:talk).permit(:title, :description, :duration, :track)
   end
 end
+

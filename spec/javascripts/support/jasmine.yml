@@ -7,7 +7,7 @@
 #
 # src_dir: public
 #
-src_dir: public
+src_dir:
 
 # src_files
 #
@@ -22,8 +22,8 @@ src_dir: public
 #   - dist/**/*.js
 #
 src_files:
-  - javascripts/**/*.js
-  - javascripts/**/**/*.js
+  - assets/application.js
+
 
 # stylesheets
 #

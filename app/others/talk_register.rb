@@ -7,16 +7,22 @@ class TalkRegister
   end
 
   def create_speaker_and_talk(speakerData, talkData)
-    speaker = Speaker.new(speakerData)
-    speaker.save!
+    newSpeaker = Speaker.new(speakerData)
 
-    talk = Talk.new
-    talk.title = talkData[:title]
-    talk.description = talkData[:description]
-    talk.speaker = speaker
-    talk.talk_duration = TalkDuration.find_by_value(talkData[:duration])
-    talk.talk_track = TalkTrack.find(talkData[:track])
-    talk.save!
-    talk
+    newTalk = Talk.new
+    newTalk.title = talkData[:title]
+    newTalk.description = talkData[:description]
+    newTalk.talk_duration = TalkDuration.find_by_value(talkData[:duration])
+    newTalk.talk_track = TalkTrack.find(talkData[:track])
+    newTalk.speaker =  newSpeaker
+
+
+    if(newSpeaker.valid? && newTalk.valid?)
+      newSpeaker.save!
+      newTalk.save!
+    end
+    newTalk
   end
+
+
 end

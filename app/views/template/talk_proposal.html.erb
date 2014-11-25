@@ -1,0 +1,73 @@
+<div ng-controller="TalkProposalCtrl">
+    <div id="header">
+        <h1>Propose a talk</h1>
+    </div>
+    <div id="section">
+        <form name="talkProposalForm" ng-submit="submitProposal()">
+            <h2>Person:</h2>
+            <ul>
+                <li>
+                    <label>
+                        Your Name:
+                        <input type="text" ng-model="newTalkData.speaker.name" required>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Your Mail:
+                        <input type="email" ng-model="newTalkData.speaker.mail" name="mail" required/><br />
+                        <div ng-show="talkProposalForm.mail.$dirty && talkProposalForm.mail.$invalid">
+                            <span ng-show="talkProposalForm.mail.$error.email">Invalid: This is not a valid email.</span>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Your Phone:
+                        <input type="text" ng-model="newTalkData.speaker.phone" required>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Your Country:
+                        <input type="text" ng-model="newTalkData.speaker.country" required>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Your Bio:
+                        <textarea ng-model="newTalkData.speaker.bio" required></textarea>
+                    </label>
+                </li>
+            </ul>
+            <h2>Talk:</h2>
+            <ul>
+                <li>
+                    <label>
+                        Title:
+                        <input type="text" ng-model="newTalkData.talk.title" required>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Description:
+                        <textarea ng-model="newTalkData.talk.description" required></textarea>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Track:
+                        <select id="track" ng-model="newTalkData.talk.track" ng-options="track.id as track.name for track in talkConfigs.tracks"></select>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Duration:
+                        <select id="duration" ng-model="newTalkData.talk.duration" ng-options="duration for duration in talkConfigs.durations"></select>
+                    </label>
+                </li>
+            </ul>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>

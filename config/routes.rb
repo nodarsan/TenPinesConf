@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
+  get 'template/:name' => 'template#get'
+  root 'template#index'
   get 'talk_config' => 'talk_config#get'
   post 'register_talk' => 'register_talk#new'
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
