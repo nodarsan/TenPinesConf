@@ -33,4 +33,19 @@ describe Speaker do
       expect(Speaker.all.size).to eq(numberOfRegisteredSpeakers)
     end
   end
+
+  context 'using invalid email' do
+    before(:each) do
+      @example_speaker_data = {name: 'Santiago Nodar',
+                               phone: '43567823',
+                               country: 'argentina',
+                               bio: 'Developer, apprentice, etc....' }
+    end
+
+    it 'should not be valid with email: asdasd' do
+      @example_speaker_data[:mail] = 'asdasd'
+      newSpeaker = Speaker.new(@example_speaker_data)
+      expect(newSpeaker.valid?).to be_falsey
+    end
+  end
 end

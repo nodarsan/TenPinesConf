@@ -887,7 +887,7 @@ angular.mock.dump = function(object) {
  * {@link ng.$http $http service}.
  *
  * *Note*: For fake HTTP backend implementation suitable for end-to-end testing or backend-less
- * development please see {@link ngMockE2E.$httpBackend e2e $httpBackend mock}.
+ * development please see {@link ngMockE2E.$httpBackend features $httpBackend mock}.
  *
  * During unit testing, we want our unit tests to run quickly and have no external dependencies so
  * we don’t want to send [XHR](https://developer.mozilla.org/en/xmlhttprequest) or
@@ -1084,7 +1084,7 @@ angular.mock.$HttpBackendProvider = function() {
  *   - passing through is disabled
  *   - auto flushing is disabled
  *
- * Returns instance for e2e testing (when `$delegate` and `$browser` specified):
+ * Returns instance for features testing (when `$delegate` and `$browser` specified):
  *   - passing through (delegating request to real backend) is enabled
  *   - auto flushing is enabled
  *
@@ -1759,7 +1759,7 @@ angular.module('ngMock', ['ng']).provider({
  *
  * The `ngMockE2E` is an angular module which contains mocks suitable for end-to-end testing.
  * Currently there is only one mock present in this module -
- * the {@link ngMockE2E.$httpBackend e2e $httpBackend} mock.
+ * the {@link ngMockE2E.$httpBackend features $httpBackend} mock.
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
@@ -1788,7 +1788,7 @@ angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
  * use the `passThrough` request handler of `when` instead of `respond`.
  *
  * Additionally, we don't want to manually have to flush mocked out requests like we do during unit
- * testing. For this reason the e2e $httpBackend flushes mocked out requests
+ * testing. For this reason the features $httpBackend flushes mocked out requests
  * automatically, closely simulating the behavior of the XMLHttpRequest object.
  *
  * To setup the application to run with this http backend, you have to create a module that depends
