@@ -21,14 +21,20 @@ describe('talkListCtrl', function() {
                 person: {
                     name: 'John Doe',
                     bio: 'natalia natalia'}}];
+
         $httpBackend.when('GET', 'talk_list.json')
             .respond(testList);
+
+        testConfig = {tracks: [{id: 1, name: 'agile'}, {id: 2, name: 'technology'}],
+            durations: [30, 60]};
+        $httpBackend.when('GET', 'talk_config.json')
+            .respond(testConfig);
 
         scope = $injector.get('$rootScope');
 
         var $controller = $injector.get('$controller');
         startController = function() {
-            return $controller('TalkProposalCtrl', {'$scope' : scope});
+            return $controller('TalkListCtrl', {'$scope' : scope});
         };
     }));
 
