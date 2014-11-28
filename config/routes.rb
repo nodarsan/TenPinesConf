@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'template/:name' => 'template#get'
   root 'template#index'
+  get 'template/:name' => 'template#get'
+
+  get 'talk_list' => 'talk_list#get'
   get 'talk_config' => 'talk_config#get'
   post 'register_talk' => 'register_talk#new'
 

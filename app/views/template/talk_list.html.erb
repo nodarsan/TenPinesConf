@@ -1,0 +1,29 @@
+<div class="col-md-6">
+  <div id="header">
+    <h1>Proposed talks:</h1>
+  </div>
+  <div id="table table-responsive">
+    <table class="table table-striped table-bordered">
+      <tr>
+        <td>
+          Filter tracks:
+          <select ng-model="filterTrack" ng-options="eachTrack for eachTrack in tracks">
+            <option value> </option>
+          </select>
+        </td>
+      </tr>
+      <tr ng-repeat="eachTalk in talks | filter:{track: filterTrack || undefined}">
+        <td>
+          <h2>{{eachTalk.title}}<br>
+            <small>{{eachTalk.track}} - {{eachTalk.duration}}</small>
+          </h2>
+          <p>{{eachTalk.description}}</p>
+          by: {{eachTalk.speaker.name}} <a href ng-click="toggleBio(eachTalk)">+</a>
+          <div id="bio" ng-if="eachTalk.toggle">
+            {{eachTalk.speaker.bio}}
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

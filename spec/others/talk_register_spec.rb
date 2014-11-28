@@ -16,15 +16,15 @@ describe TalkRegister do
       @EXAMPLE_TALK_DATA = {title: 'Some title',
                            description: 'Some interesting topic...',
                            duration: talk_duration.value,
-                           track: talk_track.id}
+                           track: talk_track.name}
       ActionMailer::Base.deliveries = []
     end
-    it 'should create new person and talk' do
+
+    it 'should create new person a save it to the DB' do
       talkRegister = TalkRegister.new
       newTalk = talkRegister.register_new_talk(@EXAMPLE_SPEAKER_DATA, @EXAMPLE_TALK_DATA)
 
       expect(Talk.find_by_title(@EXAMPLE_TALK_DATA[:title])).to eq(newTalk)
-
     end
 
     it 'should send 2 mails' do

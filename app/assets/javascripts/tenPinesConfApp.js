@@ -1,4 +1,4 @@
-var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'tenPinesConfControllers']);
+var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'tenPinesConfControllers', 'tenPinesConfServices']);
 
 tenPinesConfApp.config(['$routeProvider',
     function($routeProvider) {
@@ -10,9 +10,14 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/talk_proposal.html',
                 controller: 'TalkProposalCtrl'
             }).
+            when('/talk-list', {
+                templateUrl: 'template/talk_list.html',
+                controller: 'TalkListCtrl'
+            }).
             otherwise({
                 redirectTo: '/landing'
             });
     }]);
 
 var tenPinesConfControllers = angular.module('tenPinesConfControllers', []);
+var tenPinesConfServices = angular.module('tenPinesConfServices', ['ngResource']);

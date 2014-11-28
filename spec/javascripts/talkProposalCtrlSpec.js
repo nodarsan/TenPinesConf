@@ -28,7 +28,7 @@ describe('talkProposalCtrl', function() {
     it('should start with an empty form', function() {
         $httpBackend.expectGET('talk_config.json');
         startController();
-        expect(scope.newTalkData).toBe(undefined);
+        expect(scope.newTalkData).toEqual({});
     });
 
     it('should send form data through a POST request when submitting and show alert with thank you', function() {

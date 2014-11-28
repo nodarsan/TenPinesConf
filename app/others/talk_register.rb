@@ -13,7 +13,7 @@ class TalkRegister
     newTalk.title = talkData[:title]
     newTalk.description = talkData[:description]
     newTalk.talk_duration = TalkDuration.find_by_value(talkData[:duration])
-    newTalk.talk_track = TalkTrack.find(talkData[:track])
+    newTalk.talk_track = TalkTrack.find_by_name(talkData[:track])
     newTalk.speaker =  newSpeaker
 
 
@@ -23,6 +23,4 @@ class TalkRegister
     end
     newTalk
   end
-
-
 end
