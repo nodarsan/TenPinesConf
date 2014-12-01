@@ -35,6 +35,7 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
+  # DatabaseCleaner config
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
   end
@@ -65,4 +66,7 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  # FactoryGirl config
+  config.include FactoryGirl::Syntax::Methods
 end

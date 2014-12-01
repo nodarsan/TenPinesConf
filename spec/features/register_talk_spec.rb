@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'Register Talk Page', :js => true do
 
   before(:each) do
-    TalkDuration.new(value: 30).save!
-    TalkTrack.new(name: 'agile').save!
+    create(:half_hour_duration)
+    create(:agile_track)
   end
 
   it 'should display error message when entering an invalid mail' do

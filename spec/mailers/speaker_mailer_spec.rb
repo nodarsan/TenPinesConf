@@ -10,7 +10,7 @@ describe SpeakerMailer do
                              bio: 'Developer, apprentice, etc...' }
     @example_talk_data = {title: 'Some title',
                           description: 'Some interesting topic...'}
-    talk_duration = TalkDuration.new(value: 30)
+    talk_duration = create(:half_hour_duration)
     talk_track = TalkTrack.new(name: 'agile')
     speaker = Speaker.new(@example_speaker_data)
     talk = Talk.new(@example_talk_data)

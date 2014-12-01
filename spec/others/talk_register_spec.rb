@@ -4,7 +4,7 @@ describe TalkRegister do
   context 'valid person and talk data' do
 
     before(:each) do
-      talk_duration = TalkDuration.new(value: 30)
+      talk_duration = create(:half_hour_duration)
       talk_duration.save!
       talk_track = TalkTrack.new(name: 'agile')
       talk_track.save!

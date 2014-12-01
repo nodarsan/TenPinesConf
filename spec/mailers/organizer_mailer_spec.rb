@@ -9,7 +9,7 @@ describe OrganizerMailer do
   EXAMPLE_TALK_DATA = {title: 'Some title',
                        description: 'Some interesting topic...'}
   before(:each) do
-    talk_duration = TalkDuration.new(value: 30)
+    talk_duration = create(:half_hour_duration)
     talk_track = TalkTrack.new(name: 'agile')
     speaker = Speaker.new(EXAMPLE_SPEAKER_DATA)
     talk = Talk.new(EXAMPLE_TALK_DATA)
