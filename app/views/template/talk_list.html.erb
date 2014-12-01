@@ -2,14 +2,16 @@
   <div id="header">
     <h1>Proposed talks:</h1>
   </div>
-  <div id="table table-responsive">
+  <div id="table table-responsive" >
     <table class="table table-striped table-bordered">
       <tr>
         <td>
           Filter tracks:
-          <select ng-model="filterTrack" ng-options="eachTrack for eachTrack in tracks">
-            <option value> </option>
-          </select>
+          <div class="form-group " style="width: 20%">
+            <select ng-model="filterTrack" ng-options="eachTrack for eachTrack in tracks" class="form-control">
+              <option value> </option>
+            </select>
+          </div>
         </td>
       </tr>
       <tr ng-repeat="eachTalk in talks | filter:{track: filterTrack || undefined}">
