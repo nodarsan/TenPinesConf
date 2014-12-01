@@ -17,6 +17,10 @@ body {
   background-color: #FFFFFF;
 }
 
+.form-group label {
+    width: 60%;
+}
+
 .btn {
   border-radius: 0;
   font-family: 'Yanone Kaffeesatz','sans-serif';
