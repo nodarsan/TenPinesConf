@@ -5,9 +5,7 @@ describe TalkRegister do
 
     before(:each) do
       talk_duration = create(:half_hour_duration)
-      talk_duration.save!
-      talk_track = TalkTrack.new(name: 'agile')
-      talk_track.save!
+      talk_track = create(:agile_track)
       @EXAMPLE_SPEAKER_DATA = {name: 'Santiago Nodar',
                               mail: 'snodar@10pines.com',
                               phone: '43567823',
@@ -33,5 +31,4 @@ describe TalkRegister do
       expect(ActionMailer::Base.deliveries.size).to eq(2)
     end
   end
-
 end

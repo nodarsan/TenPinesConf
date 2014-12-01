@@ -4,19 +4,12 @@ describe Talk do
   context 'valid data and existing person' do
 
     before(:each) do
-      @example_speaker_data = {name: 'Santiago Nodar',
-                               mail: 'snodar@10pines.com',
-                               phone: '43567823',
-                               country: 'argentina',
-                               bio: 'Developer, apprentice, etc...' }
+
       @example_talk_data = {title: 'Some title',
                             description: 'Some interesting topic...'}
-      talk_duration = TalkDuration.new(value: 30)
-      talk_duration.save!
-      talk_track = TalkTrack.new(name: 'agile')
-      talk_track.save!
-      speaker = Speaker.new(@example_speaker_data)
-      speaker.save!
+      talk_duration = create(:half_hour_duration)
+      talk_track = create(:agile_track)
+      speaker = create(:santiago_nodar)
       @talk = Talk.new(@example_talk_data)
       @talk.speaker = speaker
       @talk.talk_duration = talk_duration

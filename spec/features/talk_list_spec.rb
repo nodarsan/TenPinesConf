@@ -26,9 +26,9 @@ describe 'talk list', :js => true do
 
   it 'should only show A funny talk when filter set to Funny' do
     create(:funny_track)
-    funny_talk=create(:funny_talk)
+    funny_talk = create(:funny_talk)
     visit '#/talk-list'
-    select 'agile'
+    select @talk.talk_track.name
     expect(page).to_not have_content(funny_talk.title)
     expect(page).to have_content(@talk.title)
   end
