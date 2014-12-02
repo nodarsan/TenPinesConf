@@ -7,11 +7,10 @@
 **************************/
 
 body {
-  font-family: 'Dosis', sans-serif;
-  font-size: 17px;
-
-  color: #080808;
-
+    font-family: 'Dosis', sans-serif;
+    font-size: 17px;
+    color: #080808;
+    padding-bottom: 50px;
 }
 
 .ten-pines-conf {
@@ -470,31 +469,6 @@ h2 {
 #contact-section .btn-primary:hover {
   background-color: #212020;
   color: #fff
-}
-
-
-
-/*************************
-******Footer CSS****
-**************************/
-
-#footer {
-  background-color: #212121;
-  background-image: url("../images/footer-bg.jpg");
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #FFFFFF;
-  font-size: 20px;
-  padding: 35px 0;
-}
-
-#footer a {
-  color:#f7ab24
-}
-
-#footer a:hover {
-  color:#1B7B98
 }
 
 .view-transition.ng-enter 			{ animation: moveFromRight .6s linear; }
