@@ -781,4 +781,10 @@ h2 {
   color:#1B7B98
 }
 
+.view-transition.ng-enter 			{ animation: moveFromRight .6s linear; }
+.list-change.ng-move-active {
+   animation: fade .2s linear;
+}
+
+
 

@@ -3,7 +3,6 @@ describe('talkListCtrl', function() {
 
     beforeEach(inject(function($injector) {
         $httpBackend = $injector.get('$httpBackend');
-
         testList = [
             {
                 title: 'A Very Nice Title',

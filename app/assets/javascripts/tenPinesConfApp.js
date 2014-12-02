@@ -1,4 +1,4 @@
-var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'tenPinesConfControllers', 'tenPinesConfServices']);
+var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'ngAnimate', 'tenPinesConfControllers', 'tenPinesConfServices']);
 
 tenPinesConfApp.config(['$routeProvider',
     function($routeProvider) {

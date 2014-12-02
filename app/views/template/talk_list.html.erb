@@ -14,7 +14,7 @@
           </div>
         </td>
       </tr>
-      <tr ng-repeat="eachTalk in talks | filter:{track: filterTrack || undefined}">
+      <tr ng-repeat="eachTalk in talks | filter:{track: filterTrack || undefined}" class="list-change">
         <td>
           <h2>{{eachTalk.title}}<br>
             <small>{{eachTalk.track}} - {{eachTalk.duration}}</small>
