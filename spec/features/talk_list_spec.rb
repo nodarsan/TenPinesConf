@@ -1,9 +1,18 @@
 require 'rails_helper'
 
 describe 'talk list', :js => true do
+  before(:all) do
+
+  end
+
   before(:each) do
+    @user = User.create(email: 'probando@hotmail.com', password: 'asdasd123')
     @talk = create(:interesting_talk)
     @technology_track = create(:technology_track)
+    visit '#/login'
+    fill_in 'mail', with: 'probando@hotmail.com'
+    fill_in 'pass', with: 'asdasd123'
+    click_button 'Submit'
   end
 
   it 'should show a list of talks' do
