@@ -19,7 +19,7 @@ describe 'Register Talk Page', :js => true do
     expect(page).not_to have_content('not a valid email')
   end
 
-  it 'should show alert message' do
+  it 'should show thank you message when submitting' do
     visit '#/talk-proposal'
     fill_in 'Name', with: 'Santiago Nodar'
     fill_in 'Mail', with: 'snodar@10pines.com'
@@ -33,5 +33,19 @@ describe 'Register Talk Page', :js => true do
     click_button 'Submit'
     alert = page.driver.browser.switch_to.alert
     expect(alert.text).to eq('Thank you for your proposal.')
+  end
+
+  it 'should not show thank you message when there are fields missing.' do
+    visit '#/talk-proposal'
+    fill_in 'Mail', with: 'snodar@10pines.com'
+    fill_in 'Phone', with: '43567121'
+    fill_in 'Country', with: 'Argentina'
+    fill_in 'Bio', with: 'Algo algo algo...'
+    fill_in 'Title', with: 'Un titulo'
+    fill_in 'Description', with: 'Una descripcion increible...'
+    select 'agile', from: 'Track'
+    select '30', from: 'duration'
+    click_button 'Submit'
+    expect{page.driver.browser.switch_to.alert}.to raise_error
   end
 end

@@ -19,5 +19,9 @@ tenPinesConfApp.config(['$routeProvider',
             });
     }]);
 
+tenPinesConfApp.config(['$httpProvider', function($httpProvider){
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = angular.element(document.querySelector('meta[name=csrf-token]')).attr('content');
+}]);
+
 var tenPinesConfControllers = angular.module('tenPinesConfControllers', []);
 var tenPinesConfServices = angular.module('tenPinesConfServices', ['ngResource']);
