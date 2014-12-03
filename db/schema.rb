@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114143641) do
-
-  create_table "people", force: true do |t|
-    t.string   "name"
-    t.string   "mail"
-    t.string   "phone"
-    t.string   "country"
-    t.text     "bio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20141203181008) do
 
   create_table "speakers", force: true do |t|
     t.string   "name"
@@ -58,5 +48,19 @@ ActiveRecord::Schema.define(version: 20141114143641) do
   add_index "talks", ["speaker_id"], name: "index_talks_on_speaker_id", using: :btree
   add_index "talks", ["talk_duration_id"], name: "index_talks_on_talk_duration_id", using: :btree
   add_index "talks", ["talk_track_id"], name: "index_talks_on_talk_track_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "email",                          null: false
+    t.string   "encrypted_password", limit: 128, null: false
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128, null: false
+    t.integer  "speaker_id"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["speaker_id"], name: "index_users_on_speaker_id", using: :btree
 
 end

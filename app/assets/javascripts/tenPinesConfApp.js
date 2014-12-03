@@ -14,6 +14,10 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/talk_list.html',
                 controller: 'TalkListCtrl'
             }).
+            when('/login', {
+                templateUrl: 'template/login_page.html',
+                controller: 'LoginCtrl'
+            }).
             otherwise({
                 redirectTo: '/landing'
             });
