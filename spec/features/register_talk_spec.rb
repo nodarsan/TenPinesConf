@@ -3,13 +3,12 @@ require 'rails_helper'
 describe 'Register Talk Page', :js => true do
   context 'logged in user' do
     before(:each) do
-      @speaker = create(:santiago_nodar)
-      @user = User.create!(email: 'probando@hotmail.com', password: 'asdasd123', speaker: @speaker)
+      @user = create(:santi_user)
       create(:half_hour_duration)
       create(:agile_track)
       visit '#/login'
-      fill_in 'mail', with: 'probando@hotmail.com'
-      fill_in 'pass', with: 'asdasd123'
+      fill_in 'mail', with: 'snodar@10pines.com'
+      fill_in 'pass', with: 'unaPassword'
       click_button 'Submit'
     end
 
@@ -36,8 +35,7 @@ describe 'Register Talk Page', :js => true do
 
   context 'not logged in' do
     before(:each) do
-      @speaker = create(:santiago_nodar)
-      @user = User.create!(email: 'probando@hotmail.com', password: 'asdasd123', speaker: @speaker)
+      @user = create(:santi_user)
       create(:half_hour_duration)
       create(:agile_track)
     end
@@ -55,17 +53,4 @@ describe 'Register Talk Page', :js => true do
   end
 
 
-
-  ## MOVE THIS TEST TO SPEAKER REGISTER
-  # it 'should display error message when entering an invalid mail' do
-  #   visit '#/talk-proposal'
-  #   fill_in 'Mail', with: 'asd'
-  #   expect(page).to have_content('not a valid email')
-  # end
-
-  # it 'should not display error message when entering a valid mail' do
-  #   visit '#/talk-proposal'
-  #   fill_in 'Mail', with: 'snodar@10pines.com'
-  #   expect(page).not_to have_content('not a valid email')
-  # end
 end
