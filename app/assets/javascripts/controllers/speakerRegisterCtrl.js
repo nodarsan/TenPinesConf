@@ -1,4 +1,4 @@
-tenPinesConfControllers.controller('SpeakerRegisterCtrl', ['$scope', '$http', 'talkRepository',
+tenPinesConfControllers.controller('SpeakerRegisterCtrl', ['$scope', '$http',
     function($scope, $http) {
         $scope.speakerRegistrationData = {};
 

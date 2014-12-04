@@ -1,16 +1,10 @@
 class RegisterTalkController < ApplicationController
+  before_filter :authorize
 
   def new
     talkRegister = TalkRegister.new
-
-    talkRegister.register_new_talk(speaker_params, talk_params)
-
+    talkRegister.register_new_talk(current_user.speaker, talk_params)
     render plain: ''
-  end
-
-  private
-  def speaker_params
-    params.require(:speaker).permit(:name, :mail, :phone, :country, :bio)
   end
 
   def talk_params
