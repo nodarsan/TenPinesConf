@@ -1,5 +1,5 @@
-tenPinesConfControllers.controller('TalkProposalCtrl', ['$scope', '$http', 'talkRepository',
-    function($scope, $http, talkRepository) {
+tenPinesConfControllers.controller('TalkProposalCtrl', ['$scope', 'talkRepository',
+    function($scope, talkRepository) {
         $scope.newTalkData = {};
 
         talkRepository.getTalkConfigData().success(function(data) {

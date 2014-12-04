@@ -1,0 +1,55 @@
+<div>
+  <div id="section" class="container" style="text-align: center" >
+    <div id="header">
+      <h1>Register as speaker</h1>
+    </div>
+    <form name="speakerRegistrationForm" ng-submit="submitRegistration()">
+      <fieldset>
+        <h2>Login Information</h2>
+        <div class="form-group">
+          <label>
+            Your Mail:
+            <input type="email" ng-model="speakerRegistrationData.mail" name="mail" required class="form-control">
+            <div ng-show="speakerRegistrationForm.mail.$dirty && speakerRegistrationForm.mail.$invalid">
+              <br><span ng-show="speakerRegistrationForm.mail.$error.email">Invalid: This is not a valid email.</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Your Password:
+            <input type="password" ng-model="speakerRegistrationData.password" required class="form-control">
+          </label>
+        </div>
+        <h2>Personal Information</h2>
+        <div class="form-group">
+          <label>
+            Your Name:
+            <input type="text" ng-model="speakerRegistrationData.name" required class="form-control">
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Your Bio:
+            <textarea ng-model="speakerRegistrationData.bio" required class="form-control"></textarea>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Your Phone:
+            <input type="text" ng-model="speakerRegistrationData.phone" required class="form-control">
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Your Country:
+            <input type="text" ng-model="speakerRegistrationData.country" required class="form-control">
+          </label>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-default">
+      </fieldset>
+    </form>
+  </div>
+</div>

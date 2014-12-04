@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'talk_list' => 'talk_list#get'
   get 'talk_config' => 'talk_config#get'
   post 'register_talk' => 'register_talk#new'
+  post 'register_speaker' => 'auth#sign_up'
   post 'login' => 'auth#login'
 
   # The priority is based upon order of creation: first created -> highest priority.
