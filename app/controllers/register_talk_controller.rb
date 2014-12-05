@@ -10,5 +10,6 @@ class RegisterTalkController < ApplicationController
   def talk_params
     params.require(:talk).permit(:title, :description, :duration, :track)
   end
+
 end
 
