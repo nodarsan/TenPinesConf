@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'register_talk' => 'register_talk#new'
   post 'register_speaker' => 'auth#sign_up'
   post 'login' => 'auth#login'
+  get 'logged_user' => 'auth#logged_user'
+  get 'log_out' => 'auth#logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

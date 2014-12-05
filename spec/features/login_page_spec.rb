@@ -19,17 +19,13 @@ describe 'Login page' , :js => true do
     expect(page).to have_content('Person:')
   end
 
-  it 'an unregistered user shouldn´t look any talk' do
-    visit '#/talk-list'
-    expect(page).to_not have_content('Un Titulo Muy Interesante')
-  end
-
   it 'should be ok, if santi sign in he could look your proposed talks' do
     visit '#/login'
     fill_in 'mail', with: 'snodar@10pines.com'
     fill_in 'pass' , with: 'unaPassword'
     click_button 'Submit'
     visit '#/talk-list'
+    expect(page).to have_content('User: snodar@10pines.com')
     expect(page).to have_content('Un Titulo Muy Interesante')
   end
 

@@ -1,4 +1,4 @@
-var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'ngAnimate', 'tenPinesConfControllers', 'tenPinesConfServices']);
+var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'ngCookies', 'tenPinesConfControllers', 'tenPinesConfServices']);
 
 tenPinesConfApp.config(['$routeProvider',
     function($routeProvider) {
@@ -22,6 +22,10 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/login_page.html',
                 controller: 'LoginCtrl'
             }).
+            when('/log_out',{
+                templateUrl: '/landing',
+                controller: 'LoginCtrl'
+            }).
             otherwise({
                 redirectTo: '/landing'
             });
@@ -31,5 +35,6 @@ tenPinesConfApp.config(['$httpProvider', function($httpProvider){
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = angular.element(document.querySelector('meta[name=csrf-token]')).attr('content');
 }]);
 
-var tenPinesConfControllers = angular.module('tenPinesConfControllers', []);
+tenPinesConfApp.run(['authentication', function(authentication){}]);
 var tenPinesConfServices = angular.module('tenPinesConfServices', ['ngResource']);
+var tenPinesConfControllers = angular.module('tenPinesConfControllers', []);

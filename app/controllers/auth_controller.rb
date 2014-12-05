@@ -1,4 +1,5 @@
 class AuthController < ApplicationController
+
   def sign_up
     speaker_data = {
         name: params[:name],
@@ -22,6 +23,14 @@ class AuthController < ApplicationController
         render plain: '', status: 401
       end
     end
-
   end
+
+  def logged_user
+    render plain: current_user.email
+  end
+
+  def logout
+    sign_out
+  end
+
 end
