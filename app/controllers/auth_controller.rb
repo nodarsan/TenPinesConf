@@ -30,10 +30,12 @@ class AuthController < ApplicationController
       render plain: current_user.email
     else
       render plain: 'not logged in', status: 400
+    end
   end
 
   def logout
     sign_out
+    render plain: ''
   end
 
 end

@@ -24,9 +24,7 @@ describe 'Login page' , :js => true do
     fill_in 'mail', with: 'snodar@10pines.com'
     fill_in 'pass' , with: 'unaPassword'
     click_button 'Submit'
-    visit '#/talk-list'
     expect(page).to have_content('User: snodar@10pines.com')
-    expect(page).to have_content('Un Titulo Muy Interesante')
   end
 
 end

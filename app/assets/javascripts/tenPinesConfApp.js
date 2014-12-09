@@ -22,12 +22,13 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/login_page.html',
                 controller: 'LoginCtrl'
             }).
-            when('/log_out',{
-                templateUrl: '/landing',
-                controller: 'LoginCtrl'
+            when('/logout',{
+                templateUrl: 'template/landing_page.html',
+                controller: 'LogOutCtrl'
             }).
             otherwise({
-                redirectTo: '/landing'
+                redirectTo: '/landing',
+                controller: 'LoginCtrl'
             });
     }]);
 

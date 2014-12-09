@@ -1,15 +1,8 @@
-tenPinesConfControllers.controller('LoginCtrl', ['$scope', '$http', '$rootScope','$location', 'authentication' ,
-    function($scope, $http, $rootScope, $location) {
+tenPinesConfControllers.controller('LoginCtrl', ['$scope', '$http', '$rootScope','$location', 'authentication',
+    function($scope, $http, $rootScope, $location, authentication) {
         $scope.login = function() {
             var data = {email: $scope.email, password: $scope.password};
-            $http.post('login', data).success(function(){
-                $location.path('/landing');
-            });
-
+            authentication.login(data.email,data.password)
         };
-        $scope.logOut = function () {
-            $http.get('log_out').success(function () {
-                alert('Bye bye! :)');
-            });
-        }
+
 }]);

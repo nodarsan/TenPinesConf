@@ -11,19 +11,22 @@
 <body class="ten-pines-conf">
 
     <div class="container-fluid">
-      <div class="col-md-6">
-        <a ng-show="loggedUser"> User: {{loggedUser}} </a>
-        <a ng-show="loggedUser" href="#/logout">Log out</a>
-        <a ng-hide="loggedUser" href="#/login">Login</a>
-        <a ng-hide="loggedUser" href="#/register"> Sign Up</a>
+      <div class="col-md-6" >
+        <a ng-show="logged_in"> User: {{user_email}} </a>
+        <a ng-hide="logged_in" href="#/login">Login</a>
+        <a ng-hide="logged_in" href="#/register"> Sign Up</a>
+        <a ng-show="logged_in" href="#/logout">Log out</a>
         <img src="<%= image_url 'logo.png' %>" align="left">
       </div>
+
+
+
       <div class="col-md-6">
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="scroll"><a href="#/landing">Home</a></li>
-            <li class="scroll"><a ng-hide="loggedUser" href="#/login" >Propose a talk</a></li>
-            <li class="scroll"><a ng-show="loggedUser" href="#/talk-proposal" >Propose a talk</a></li>
+            <li class="scroll"><a ng-hide="logged_in" href="#/login" >Propose a talk</a></li>
+            <li class="scroll"><a ng-show="logged_in" href="#/talk-proposal" >Propose a talk</a></li>
             <li class="scroll"><a href="#/talk-list">Talks</a></li>
           </ul>
         </div>
