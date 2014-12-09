@@ -472,7 +472,7 @@ h2 {
 }
 
 .view-transition {
-    animation: moveFromRight .2s linear;
+    animation: moveFromRight .6s linear;
 }
 
 .list-change.ng-move-active {
