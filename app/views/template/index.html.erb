@@ -19,8 +19,6 @@
         <img src="<%= image_url 'logo.png' %>" align="left">
       </div>
 
-
-
       <div class="col-md-6">
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -28,6 +26,7 @@
             <li class="scroll"><a ng-hide="logged_in" href="#/login" >Propose a talk</a></li>
             <li class="scroll"><a ng-show="logged_in" href="#/talk-proposal" >Propose a talk</a></li>
             <li class="scroll"><a href="#/talk-list">Talks</a></li>
+            <li class="scroll"><a ng-show="logged_in" href="#/my-talks"> My Talks </a></li>
           </ul>
         </div>
       </div>
