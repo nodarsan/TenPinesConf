@@ -3,9 +3,10 @@ require 'rails_helper'
 describe 'Register Talk Page', :js => true do
   context 'logged in user' do
     before(:each) do
-      @user = create(:santi_user)
+      create(:santi_user)
       create(:half_hour_duration)
       create(:agile_track)
+
       visit '#/login'
       fill_in 'mail', with: 'snodar@10pines.com'
       fill_in 'pass', with: 'unaPassword'
@@ -31,25 +32,6 @@ describe 'Register Talk Page', :js => true do
       click_button 'Submit'
       expect{page.driver.browser.switch_to.alert}.to raise_error
     end
-  end
-
-  context 'not logged in' do
-    before(:each) do
-      @user = create(:santi_user)
-      create(:half_hour_duration)
-      create(:agile_track)
-    end
-
-    #VER ERROR
-    # it 'should not show thank you message when you are not logged in' do
-    #   visit '#/talk-proposal'
-    #   fill_in 'Title', with: 'Un titulo'
-    #   fill_in 'Description', with: 'Una descripcion increible...'
-    #   select 'agile', from: 'Track'
-    #   select '30', from: 'duration'
-    #   click_button 'Submit'
-    #   expect{page.driver.browser.switch_to.alert}.to raise_error
-    # end
   end
 
 
