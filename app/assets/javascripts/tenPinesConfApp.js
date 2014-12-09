@@ -15,8 +15,12 @@ tenPinesConfApp.config(['$routeProvider',
                 controller: 'TalkListCtrl'
             }).
             when('/my-talks', {
-                templateUrl:'template/my_talks_list.html',
+                templateUrl: 'template/talk_list.html',
                 controller: 'MyTalksCtrl'
+            }).
+            when('/talk-edition/:id', {
+                templateUrl: 'template/talk_edition.html',
+                controller: 'TalkEditionCtrl'
             }).
             when('/register', {
                 templateUrl: 'template/register_page.html',
