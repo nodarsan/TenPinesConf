@@ -12,11 +12,15 @@
 
     <div class="container-fluid">
       <div class="col-md-6" >
-        <a ng-show="logged_in"> User: {{user_email}} </a>
-        <a ng-hide="logged_in" href="#/login">Login</a>
-        <a ng-hide="logged_in" href="#/register"> Sign Up</a>
-        <a ng-show="logged_in" href="#/logout">Log out</a>
-        <img src="<%= image_url 'logo.png' %>" align="left">
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="scroll" ng-hide="logged_in"><a href="#/login">Login</a></li>
+            <li class="scroll" ng-hide="logged_in"><a href="#/register">Sign Up</a></li>
+            <li class="scroll" ng-show="logged_in"><a href="#/logout">Log out</a></li>
+            <li class="scroll"><a ng-show="logged_in"> User: {{user_email}} </a></li>
+           </ul>
+          <img src="<%= image_url 'logo.png' %>" align="center"><br>
+      </div>
       </div>
 
       <div class="col-md-6">
