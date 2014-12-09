@@ -11,12 +11,12 @@ describe 'Logout', :js => true do
   end
 
   it 'shouldn´t show the current user' do
-    expect(page).to have_content('User: mmelendi@10pines.com')
+    expect(page).to have_content('USER: MMELENDI@10PINES.COM')
     click_link 'Log out'
     alert = page.driver.browser.switch_to.alert
     expect(alert.text).to eq('Bye bye! :)')
 
-    expect(page).to_not have_content('User: mmelendi@10pines.com')
+    expect(page).to_not have_content('USER: MMELENDI@10PINES.COM')
   end
 
   it 'shouldn´t show section my talks' do
@@ -27,8 +27,8 @@ describe 'Logout', :js => true do
 
   it 'should show login and sign up links' do
     click_link 'Log out'
-    expect(page).to have_content('Sign Up')
-    expect(page).to have_content('Login')
+    expect(page).to have_content('SIGN UP')
+    expect(page).to have_content('LOGIN')
   end
 
 end

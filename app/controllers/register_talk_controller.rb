@@ -1,10 +1,13 @@
 class RegisterTalkController < ApplicationController
-  before_filter :authorize
 
   def new
-    talkRegister = TalkRegister.new
-    talkRegister.register_new_talk(current_user.speaker, talk_params)
-    render plain: ''
+    if signed_in?
+      talkRegister = TalkRegister.new
+      talkRegister.register_new_talk(current_user.speaker, talk_params)
+      render plain: ''
+    else
+      render plain: '', status: 401
+    end
   end
 
   def talk_params
