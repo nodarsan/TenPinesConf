@@ -1,4 +1,4 @@
-tenPinesConfServices.factory('talkRepository',['$http', '$resource', function($http, $resource) {
+tenPinesConfServices.factory('talkRepository',['$http', '$resource', function($http) {
     return {
         getTalkConfigData: function() {
             return $http.get('talk_config.json');
@@ -12,6 +12,5 @@ tenPinesConfServices.factory('talkRepository',['$http', '$resource', function($h
         getMyTalks: function () {
             return $http.get('my_talks.json')
         }
-
     }
 }]);
