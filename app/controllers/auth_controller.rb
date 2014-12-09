@@ -8,9 +8,14 @@ class AuthController < ApplicationController
         phone: params[:phone],
         country: params[:country]
     }
-    speaker = Speaker.new(speaker_data)
-    User.create!(email: params[:mail], password: params[:password], speaker: speaker)
-    render plain: ''
+    begin
+      speaker = Speaker.new(speaker_data)
+      User.create!(email: params[:mail], password: params[:password], speaker: speaker)
+    rescue
+      render plain: 'invalid data or already existing user.', status: 400
+    else
+      render plain: ''
+    end
   end
 
   def login
