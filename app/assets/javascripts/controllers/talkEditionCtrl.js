@@ -1,5 +1,5 @@
-tenPinesConfControllers.controller('TalkEditionCtrl', ['$scope', '$routeParams', 'talkRepository',
-    function($scope, $routeParams, talkRepository) {
+tenPinesConfControllers.controller('TalkEditionCtrl', ['$scope', '$routeParams', '$location', 'talkRepository',
+    function($scope, $routeParams, $location, talkRepository) {
         var talkId = $routeParams.id;
         talkRepository.getTalkConfigData().success(function(data) {
             $scope.talkConfigs = data;
@@ -10,6 +10,7 @@ tenPinesConfControllers.controller('TalkEditionCtrl', ['$scope', '$routeParams',
         $scope.submitEdition = function () {
             talkRepository.submitEdition($scope.talkData).success(function() {
                 alert('Talk data modified.');
+                $location.path('/my-talks');
             });
         };
     }]);
