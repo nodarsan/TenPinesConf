@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'template/:name' => 'template#get'
 
   get 'talk_list' => 'talk_list#all_talks'
-  get 'my_talks' => 'talk_list#my_talks'
-  get 'talk/:id' => 'talk_list#talk'
+  get 'my_talks' => 'my_talks_list#my_talks'
+  get 'talk/:id' => 'my_talks_list#talk'
   get 'talk_config' => 'talk_config#get'
   post 'register_talk' => 'register_talk#new'
   post 'edit_talk' => 'register_talk#edit'
