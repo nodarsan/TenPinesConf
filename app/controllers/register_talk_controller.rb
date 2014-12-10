@@ -18,9 +18,8 @@ class RegisterTalkController < ApplicationController
   def edit
     talk_id = params[:id]
 
-    if current_user.speaker.equal?(Talk.find(talk_id).speaker)
+    if current_user.speaker.eql?(Talk.find(talk_id).speaker)
       data = {
-
           talk_track: TalkTrack.find_by_name(params[:track]),
           talk_duration: TalkDuration.find_by_value(params[:duration]),
           title: params[:title],
