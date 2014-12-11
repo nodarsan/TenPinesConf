@@ -8,8 +8,7 @@ gem 'mysql2'
 gem 'angularjs-rails'
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
-# gem 'uglifier', '>= 1.3.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -38,4 +37,9 @@ group :test, :development do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+end
+
+group :assets do
+  # Use Uglifier as compressor for JavaScript assets
+  gem 'uglifier', '>= 1.3.0'
 end
