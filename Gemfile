@@ -30,12 +30,13 @@ gem 'spring',      group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'rails_12factor'
+gem 'letter_opener'
 
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'jasmine'
-  gem 'letter_opener'
+
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
