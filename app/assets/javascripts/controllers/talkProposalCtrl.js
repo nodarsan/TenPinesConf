@@ -1,5 +1,5 @@
-tenPinesConfControllers.controller('TalkProposalCtrl', ['$scope', '$http', 'talkRepository',
-    function($scope, $http, talkRepository) {
+tenPinesConfControllers.controller('TalkProposalCtrl', ['$scope', '$location', 'talkRepository',
+    function($scope, $location, talkRepository) {
         $scope.newTalkData = {};
 
         talkRepository.getTalkConfigData().success(function(data) {
@@ -13,6 +13,7 @@ tenPinesConfControllers.controller('TalkProposalCtrl', ['$scope', '$http', 'talk
         $scope.submitProposal = function () {
             talkRepository.submitTalkProposal($scope.newTalkData).success(function() {
                 alert('Thank you for your proposal.');
+                $location.path('/my-talks');
             });
         };
     }]);

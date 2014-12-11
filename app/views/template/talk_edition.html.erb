@@ -1,0 +1,38 @@
+<div>
+  <div id="section" class="container" style="text-align: center" >
+    <div id="header">
+      <h1>Edit your talk:</h1>
+    </div>
+
+    <form name="talkEditionForm" ng-submit="submitEdition()">
+      <fieldset>
+        <h2>Talk:</h2>
+        <div class="form-group">
+          <label>
+            Title:
+            <input type="text" ng-model="talkData.title" required class="form-control">
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Description:
+            <textarea ng-model="talkData.description" required class="form-control"></textarea>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Track:
+            <select id="track" ng-model="talkData.track" ng-options="track for track in talkConfigs.tracks" class="form-control"></select>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Duration:
+            <select id="duration" ng-model="talkData.duration" ng-options="duration for duration in talkConfigs.durations" class="form-control"></select>
+          </label>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-default">
+      </fieldset>
+    </form>
+  </div>
+</div>

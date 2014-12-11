@@ -1,5 +1,7 @@
 class TalkListController < ApplicationController
-  def get
+  def all_talks
     @talks = Talk.all
   end
+
+
 end

@@ -2,9 +2,17 @@ Rails.application.routes.draw do
   root 'template#index'
   get 'template/:name' => 'template#get'
 
-  get 'talk_list' => 'talk_list#get'
+  get 'talk_list' => 'talk_list#all_talks'
+  get 'my_talks' => 'my_talks_list#my_talks'
+  get 'talk/:id' => 'my_talks_list#talk'
   get 'talk_config' => 'talk_config#get'
   post 'register_talk' => 'register_talk#new'
+  post 'edit_talk' => 'register_talk#edit'
+  post 'register_speaker' => 'auth#sign_up'
+  post 'login' => 'auth#login'
+  get 'logged_user' => 'auth#logged_user'
+  get 'log_out' => 'auth#logout'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

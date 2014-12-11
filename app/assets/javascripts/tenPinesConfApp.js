@@ -1,4 +1,4 @@
-var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'ngAnimate', 'tenPinesConfControllers', 'tenPinesConfServices']);
+var tenPinesConfApp = angular.module('tenPinesConfApp', ['ngRoute', 'ngCookies', 'tenPinesConfControllers', 'tenPinesConfServices']);
 
 tenPinesConfApp.config(['$routeProvider',
     function($routeProvider) {
@@ -14,8 +14,29 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/talk_list.html',
                 controller: 'TalkListCtrl'
             }).
+            when('/my-talks', {
+                templateUrl: 'template/my_talks_list.html',
+                controller: 'MyTalksCtrl'
+            }).
+            when('/talk-edition/:id', {
+                templateUrl: 'template/talk_edition.html',
+                controller: 'TalkEditionCtrl'
+            }).
+            when('/register', {
+                templateUrl: 'template/register_page.html',
+                controller: 'SpeakerRegisterCtrl'
+            }).
+            when('/login', {
+                templateUrl: 'template/login_page.html',
+                controller: 'LoginCtrl'
+            }).
+            when('/logout',{
+                templateUrl: 'template/landing_page.html',
+                controller: 'LogOutCtrl'
+            }).
             otherwise({
-                redirectTo: '/landing'
+                redirectTo: '/landing',
+                controller: 'LoginCtrl'
             });
     }]);
 
@@ -23,5 +44,6 @@ tenPinesConfApp.config(['$httpProvider', function($httpProvider){
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = angular.element(document.querySelector('meta[name=csrf-token]')).attr('content');
 }]);
 
-var tenPinesConfControllers = angular.module('tenPinesConfControllers', []);
+tenPinesConfApp.run(['authentication', function(authentication){}]);
 var tenPinesConfServices = angular.module('tenPinesConfServices', ['ngResource']);
+var tenPinesConfControllers = angular.module('tenPinesConfControllers', []);

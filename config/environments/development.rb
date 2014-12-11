@@ -9,6 +9,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # added for Clearance
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   # Show full error reports and disable caching.
