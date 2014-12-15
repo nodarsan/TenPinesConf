@@ -4,4 +4,6 @@ class SpeakerUser < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :speaker
+  validates :speaker, presence: true
+  validates_associated :speaker
 end

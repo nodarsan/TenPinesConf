@@ -8,6 +8,7 @@ describe 'Logout', :js => true do
     fill_in 'mail', with: 'mmelendi@10pines.com'
     fill_in 'pass' , with: 'otraPassword'
     click_button 'Submit'
+    sleep(1)
   end
 
   it 'shouldn´t show the current user' do
@@ -15,7 +16,6 @@ describe 'Logout', :js => true do
     click_link 'Log out'
     alert = page.driver.browser.switch_to.alert
     expect(alert.text).to eq('Bye bye! :)')
-
     expect(page.text.upcase).not_to have_content('USER: MMELENDI@10PINES.COM')
   end
 
