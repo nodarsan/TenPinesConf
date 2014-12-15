@@ -14,7 +14,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
-  # Show full error reports and disable caching.
+  # Show full error reports and disable caching.<z
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 

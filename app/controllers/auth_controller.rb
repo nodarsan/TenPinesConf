@@ -10,7 +10,7 @@ class AuthController < ApplicationController
     }
     begin
       speaker = Speaker.new(speaker_data)
-      User.create!(email: params[:mail], password: params[:password], speaker: speaker)
+      SpeakerUser.create!(email: params[:mail], password: params[:password], password_confirmation: params[:password], speaker: speaker)
     rescue
       render plain: 'invalid data or already existing user.', status: 400
     else
@@ -19,27 +19,36 @@ class AuthController < ApplicationController
   end
 
   def login
-    @user = User.authenticate(params[:email], params[:password])
-    sign_in(@user) do |status|
-      if status.success?
-        current_user
-        render plain: ''
-      else
-        render plain: '', status: 401
-      end
+    @user = SpeakerUser.find_by_email!(params[:email])
+    if @user.valid_password?(params[:password])
+      sign_in(@user)
+      render plain: "#{@user.email}"
+    else
+      render plain: '', status: 401
     end
+
+
+    # sign_in(@user) do |status|
+    #   if status.success?
+    #     current_user
+    #     render plain: ''
+    #   else
+    #     render plain: '', status: 401
+    #   end
+    # end
   end
 
   def logged_user
-    if signed_in?
-      render plain: current_user.email
+    if speaker_user_signed_in?
+      @user = current_speaker_user
+      render plain: @user.email
     else
       render plain: 'not logged in', status: 400
     end
   end
 
   def logout
-    sign_out
+    sign_out(current_speaker_user)
     render plain: ''
   end
 

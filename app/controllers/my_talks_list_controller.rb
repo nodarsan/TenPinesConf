@@ -1,8 +1,8 @@
 class MyTalksListController < ApplicationController
-  before_action :authorize
+  before_action :authenticate_speaker_user!
 
   def my_talks
-    @talks = current_user.speaker.talks
+    @talks = current_speaker_user.speaker.talks
   end
 
   def talk

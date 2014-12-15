@@ -7,7 +7,7 @@ tenPinesConfServices.factory('talkRepository',['$http', '$resource', function($h
             return  $http.get('talk_list.json');
         },
         submitTalkProposal: function(newTalkData) {
-            return $http.post('register_talk', newTalkData);
+            return $http.post('register_talk.json', newTalkData);
         },
         getMyTalks: function () {
             return $http.get('my_talks.json')
