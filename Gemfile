@@ -4,7 +4,7 @@ ruby '2.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use mysql as the database for Active Record
-gem 'pg'
+gem 'mysql2'
 gem 'angularjs-rails'
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.3'
@@ -13,7 +13,7 @@ gem 'angularjs-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 # gem 'sdoc', '~> 0.4.0',        group: :doc
-gem 'clearance'
+gem 'devise'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',      group: :development
 
