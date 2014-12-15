@@ -19,9 +19,10 @@ describe 'Register Talk Page', :js => true do
       fill_in 'Description', with: 'Una descripcion increible...'
       select 'agile', from: 'Track'
       select '30', from: 'duration'
-      click_button 'Submit'
-      alert = page.driver.browser.switch_to.alert
-      expect(alert.text).to eq('Thank you for your proposal.')
+      message = accept_alert do
+        click_button 'Submit'
+      end
+      expect(message).to eq('Thank you for your proposal.')
     end
 
     it 'should not show thank you message when there are fields missing.' do
