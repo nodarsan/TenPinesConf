@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   get 'talk_config' => 'talk_config#get'
   post 'register_talk' => 'register_talk#new'
   post 'edit_talk' => 'register_talk#edit'
-  post 'register_speaker' => 'auth#sign_up'
-  post 'login' => 'auth#login'
-  get 'logged_user' => 'auth#logged_user'
-  get 'log_out' => 'auth#logout'
+  post 'register_speaker' => 'speaker_auth#sign_up'
+  post 'login' => 'speaker_auth#login'
+  get 'logged_user' => 'speaker_auth#logged_user'
+  get 'log_out' => 'speaker_auth#logout'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
