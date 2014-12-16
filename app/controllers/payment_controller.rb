@@ -9,7 +9,7 @@ class PaymentController < ApplicationController
           :amount => 200,
           :currency => 'usd',
           :card => token,
-          :description => params[:email]
+          :description => 'testing'
       )
     rescue Exception => e
       render plain: e.message, status: 500
