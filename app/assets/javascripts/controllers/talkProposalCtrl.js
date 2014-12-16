@@ -1,5 +1,8 @@
 tenPinesConfControllers.controller('TalkProposalCtrl', ['$scope', '$location', 'talkRepository',
     function($scope, $location, talkRepository) {
+        if (!$scope.logged_in_as_speaker){
+            $location.path('/login')
+        }
         $scope.newTalkData = {};
 
         talkRepository.getTalkConfigData().success(function(data) {
