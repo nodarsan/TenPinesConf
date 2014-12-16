@@ -103,7 +103,7 @@ h2 {
 }
 
 .home{
-    height: 1080px;
+    min-height: calc(100vh - 50px);
     width: 100%;
 }
 
