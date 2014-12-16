@@ -14,7 +14,7 @@ tenPinesConfServices.factory('authentication',['$http', '$rootScope', function($
     });
     return {
         login_as_speaker: function(email, password) {
-            $http.post('login_as_speaker.json', {email: email , password: password }).success(function(){
+            $http.post('login_speaker.json', {email: email , password: password }).success(function(){
                 $rootScope.logged_in = true;
                 $rootScope.logged_in_as_speaker = true;
                 $rootScope.logged_in_as_attendee = false;
