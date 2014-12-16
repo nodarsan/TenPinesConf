@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :speaker_users
   root 'template#index'
   get 'template/:name' => 'template#get'
 

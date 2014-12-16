@@ -4,7 +4,6 @@ describe TalkRegister do
   context 'valid person and talk data' do
     before(:each) do
       @speaker = create(:santiago_nodar)
-      @user = User.create!(email: 'probando@hotmail.com', password: 'asdasd123', speaker: @speaker)
       @EXAMPLE_TALK_DATA = {title: 'Some title',
                            description: 'Some interesting topic...',
                            duration: create(:half_hour_duration).value,

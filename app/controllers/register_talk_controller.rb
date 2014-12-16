@@ -1,10 +1,10 @@
 class RegisterTalkController < ApplicationController
-  before_action :authorize
+  before_action :authenticate_speaker_user!
 
   def new
     if signed_in?
       talkRegister = TalkRegister.new
-      talkRegister.register_new_talk(current_user.speaker, talk_params)
+      talkRegister.register_new_talk(current_speaker_user.speaker, talk_params)
       render plain: ''
     else
       render plain: '', status: 401
@@ -18,7 +18,7 @@ class RegisterTalkController < ApplicationController
   def edit
     talk_id = params[:id]
 
-    if current_user.speaker.eql?(Talk.find(talk_id).speaker)
+    if current_speaker_user.speaker.eql?(Talk.find(talk_id).speaker)
       data = {
           talk_track: TalkTrack.find_by_name(params[:track]),
           talk_duration: TalkDuration.find_by_value(params[:duration]),
