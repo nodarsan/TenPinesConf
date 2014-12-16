@@ -6,10 +6,11 @@ describe 'My talks list for current user', :js => true do
     create(:mati_user)
     create(:interesting_talk)
 
-    visit '#/login'
-    fill_in 'mail', with: 'mmelendi@10pines.com'
+    visit '#/login-speaker'
+    fill_in 'email', with: 'mmelendi@10pines.com'
     fill_in 'pass' , with: 'otraPassword'
     click_button 'Submit'
+    sleep(1)
     visit '#/talk-proposal'
     fill_in 'Title', with: 'A Funny Talk'
     fill_in 'Description', with: 'Una descripcion increible...'

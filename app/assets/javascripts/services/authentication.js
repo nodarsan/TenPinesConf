@@ -28,12 +28,12 @@ tenPinesConfServices.factory('authentication',['$http', '$rootScope', function($
                 $rootScope.user_email = email;
             })},
         logout: function() {
-            $http.get('log_out.json').success(function () {
+            $http.get('logout_speaker.json').success(function () {
                 $rootScope.logged_in = false;
                 $rootScope.logged_in_as_speaker = false;
                 $rootScope.logged_in_as_attendee = false;
             });
-            $http.get('log_out_attendee.json').success(function () {
+            $http.get('logout_attendee.json').success(function () {
                 $rootScope.logged_in = false;
                 $rootScope.logged_in_as_speaker = false;
                 $rootScope.logged_in_as_attendee = false;
