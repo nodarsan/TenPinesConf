@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :attendee_users
+  devise_for :attendees
   devise_for :speaker_users
   root 'template#index'
   get 'template/:name' => 'template#get'
@@ -13,7 +15,10 @@ Rails.application.routes.draw do
   post 'login' => 'auth#login'
   get 'logged_user' => 'auth#logged_user'
   get 'log_out' => 'auth#logout'
-
+  post 'payment' => 'payment#pay'
+  get 'log_out' => 'attendee_auth#log_out'
+  post 'login_attendee' => 'attendee_auth#login'
+  post 'register_attendee' => 'attendee_auth#sign_up'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -22,7 +22,6 @@ describe 'My talks list for current user', :js => true do
 
   # CurrentUser doesn't exists
   it 'should show only talks for Melendi' do
-    visit '#/my-talks'
     expect(page).to have_content('A Funny Talk')
     expect(page).to_not have_content('Un Titulo Muy Interesante')
   end

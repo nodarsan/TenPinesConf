@@ -14,6 +14,7 @@ describe 'Logout', :js => true do
   it 'shouldn´t show the current user' do
     expect(page.text.upcase).to have_content('USER: MMELENDI@10PINES.COM')
     click_link 'Log out'
+    sleep(2)
     alert = page.driver.browser.switch_to.alert
     expect(alert.text).to eq('Bye bye! :)')
     expect(page.text.upcase).not_to have_content('USER: MMELENDI@10PINES.COM')

@@ -11,7 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215135631) do
+ActiveRecord::Schema.define(version: 20141216150820) do
+
+  create_table "assistants", force: true do |t|
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "email",                          null: false
+    t.string   "encrypted_password", limit: 128, null: false
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128, null: false
+  end
+
+  add_index "assistants", ["email"], name: "index_assistants_on_email", using: :btree
+  add_index "assistants", ["remember_token"], name: "index_assistants_on_remember_token", using: :btree
+
+  create_table "attendee_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "attendee_id"
+  end
+
+  add_index "attendee_users", ["attendee_id"], name: "index_attendee_users_on_attendee_id", using: :btree
+  add_index "attendee_users", ["email"], name: "index_attendee_users_on_email", unique: true, using: :btree
+  add_index "attendee_users", ["reset_password_token"], name: "index_attendee_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "attendees", force: true do |t|
+    t.string   "name"
+    t.string   "mail"
+    t.string   "phone"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "speaker_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -68,6 +109,11 @@ ActiveRecord::Schema.define(version: 20141215135631) do
   add_index "talks", ["speaker_id"], name: "index_talks_on_speaker_id", using: :btree
   add_index "talks", ["talk_duration_id"], name: "index_talks_on_talk_duration_id", using: :btree
   add_index "talks", ["talk_track_id"], name: "index_talks_on_talk_track_id", using: :btree
+
+  create_table "user_sessions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at",                     null: false
