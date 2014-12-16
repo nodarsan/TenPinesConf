@@ -15,8 +15,9 @@ tenPinesConfControllers.controller('paymentCtrl',['$scope', '$http',function($sc
     };
 
     var stripeResponseHandler = function(status, response){
-        $http.post('/payment', {stripeToken: response.id});
-        alert('Thanks for buy! :)');
+        $http.post('/payment.json', {stripeToken: response.id}).success(function(data){
+            alert('Thanks for buy! :)');
+        });
     };
 
 }]);

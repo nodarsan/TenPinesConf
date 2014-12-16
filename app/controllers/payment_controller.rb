@@ -1,6 +1,7 @@
 require 'stripe'
 
 class PaymentController < ApplicationController
+  before_action :authenticate_attendee_user!
   def pay
     Stripe.api_key = 'sk_test_Py4yckVJAF2AOF4tbHVDxzG2'
     token = params[:stripeToken]
