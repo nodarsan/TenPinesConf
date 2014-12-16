@@ -24,8 +24,15 @@ tenPinesConfApp.config(['$routeProvider',
                 controller: 'TalkEditionCtrl'
             }).
             when('/register', {
+                templateUrl: 'template/home_register_page.html'
+            }).
+            when('/register-speaker', {
                 templateUrl: 'template/register_page.html',
                 controller: 'SpeakerRegisterCtrl'
+            }).
+            when('/register-attendee', {
+                templateUrl: 'template/register_attendee_page.html',
+                controller: 'attendeeRegisterCtrl'
             }).
             when('/login', {
                 templateUrl: 'template/home_login_page.html'
@@ -33,6 +40,10 @@ tenPinesConfApp.config(['$routeProvider',
             when('/login-speaker',{
                 templateUrl: 'template/login_speaker_page.html',
                 controller: 'LoginCtrl'
+            }).
+            when('/login-attendee', {
+                templateUrl: 'template/login_attendee_page.html',
+                controller: 'loginAttendeeCtrl'
             }).
             when('/logout', {
                 templateUrl: 'template/landing_page.html',
@@ -42,17 +53,8 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/payment.html',
                 controller: 'paymentCtrl'
             }).
-            when('/login-attendee', {
-                templateUrl: 'template/login_attendee_page.html',
-                controller: 'loginAttendeeCtrl'
-            }).
-            when('/register_attendee', {
-                templateUrl: 'template/register_attendee_page.html',
-                controller: 'attendeeRegisterCtrl'
-            }).
             otherwise({
-                redirectTo: '/landing',
-                controller: 'LoginCtrl'
+                redirectTo: '/landing'
             });
     }]);
 
