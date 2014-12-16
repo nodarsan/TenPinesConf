@@ -1,9 +1,9 @@
 /**
  * Created by memonono on 16/12/14.
  */
-tenPinesConfControllers.controller('loginAttendeeCtrl', ['$scope', '$location', 'authenticationAttendee',
-    function($scope, $location, authenticationAttendee) {
+tenPinesConfControllers.controller('loginAttendeeCtrl', ['$scope', '$location', 'authentication',
+    function($scope, $location, authentication) {
         $scope.login = function() {
-            authenticationAttendee.login($scope.email, $scope.password);
+            authentication.login_as_attendee($scope.email, $scope.password);
         };
     }]);
