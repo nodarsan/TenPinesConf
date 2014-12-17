@@ -7,9 +7,9 @@ tenPinesConfControllers.controller('attendeeRegisterCtrl', ['$scope', '$http', '
 
         $scope.submitRegistration = function () {
             $http.post('/register_attendee', $scope.attendeeRegistrationData).
-                success(function(data) {
+                success(function() {
                     alert('Thank you for registering.');
-                    $http.post('/login_attendee',{email: data.email,password:data.password});
+                    $http.post('/login_attendee',{email: $scope.attendeeRegistrationData.mail,password:$scope.attendeeRegistrationData.password});
                     $location.path('/payment');
                 }).
                 error(function (status) {
