@@ -15,6 +15,7 @@ class PaymentController < ApplicationController
     rescue Exception => e
       render plain: e.message, status: 500
     else
+      PurchaseMailer.purchase_mail(current_attendee_user.attendee).deliver
       render plain: charge
     end
   end

@@ -16,7 +16,7 @@ describe 'My talks list for current user', :js => true do
     fill_in 'Description', with: 'Una descripcion increible...'
     select 'agile', from: 'Track'
     select '30', from: 'duration'
-    message = accept_alert do
+    accept_alert do
       click_button 'Submit'
     end
   end
