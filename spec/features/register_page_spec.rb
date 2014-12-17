@@ -44,5 +44,4 @@ describe 'Register page', :js => true do
       end
       expect(message).to eq('User already exists.')
   end
-
 end

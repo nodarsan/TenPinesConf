@@ -5,6 +5,6 @@ tenPinesConfControllers.controller('loginAttendeeCtrl', ['$scope', '$location', 
     function($scope, $location, authentication) {
         $scope.login = function() {
             authentication.login_as_attendee($scope.email, $scope.password);
-            $location.path('/payment');
+            $location.path('/landing');
         };
     }]);

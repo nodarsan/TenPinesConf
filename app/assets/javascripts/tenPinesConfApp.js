@@ -39,7 +39,7 @@ tenPinesConfApp.config(['$routeProvider',
             }).
             when('/login-speaker',{
                 templateUrl: 'template/login_speaker_page.html',
-                controller: 'LoginCtrl'
+                controller: 'loginSpeakerCtrl'
             }).
             when('/login-attendee', {
                 templateUrl: 'template/login_attendee_page.html',
