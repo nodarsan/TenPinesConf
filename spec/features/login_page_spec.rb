@@ -5,6 +5,7 @@ describe 'Login page' , :js => true do
   before(:each) do
     create(:santi_user)
     create(:mati_user)
+    create(:mati_attendee_user)
     create(:interesting_talk)
   end
 
@@ -27,6 +28,18 @@ describe 'Login page' , :js => true do
     click_button 'Submit'
     sleep(1)
     expect(page.text.upcase).to have_content('USER: SNODAR@10PINES.COM')
+    expect(page.text.upcase).to have_content('PROPOSE A TALK')
   end
+
+  it 'should be ok, if mati sign in he could by tickets for the conference' do
+    visit '#/login-attendee'
+    fill_in 'mail', with: 'mmelendi@10pines.com'
+    fill_in 'pass' , with: 'otraPassword'
+    click_button 'Submit'
+    sleep(1)
+    expect(page.text.upcase).to have_content('USER: MMELENDI@10PINES.COM')
+    expect(page.text.upcase).to have_content('BUY TICKET')
+  end
+
 
 end
