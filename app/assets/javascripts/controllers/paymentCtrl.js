@@ -15,9 +15,15 @@ tenPinesConfControllers.controller('paymentCtrl',['$scope', '$http',function($sc
     };
 
     var stripeResponseHandler = function(status, response){
-        $http.post('/payment.json', {stripeToken: response.id}).success(function(data){
-            alert('Thanks for buy! :)');
-        });
+        if(response.error){
+            alert('Operation could not be completed:' + response.error.message);
+        } else {
+            $http.post('/payment.json', {stripeToken: response.id}).success(function(data){
+                alert('Thanks for buy! :)');
+            }).error(function(data) {
+                alert('Operation could not be completed:' + data)
+            });
+        }
     };
 
 }]);
