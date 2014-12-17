@@ -1,12 +1,25 @@
-<div class="container">
+<div class="container"  style="position: relative; text-align: center">
 
   <div id="header">
 
   </div>
 
-  <div id="section" align="center" >
-    <a href="#/login-speaker"> Login as speaker </a>
-    <a href="#/login-attendee"> Login as attendee </a>
-  </div>
+    <div style="position: absolute; left: 20%">
+      <div id="role-box">
+        <h2> Are you a speaker? </h2>
+        <img src="<%= image_url 'businessman153.svg' %>" style="width: 200px"><br><br>
+        <a id="lg-btn" href="#/login-speaker" class="btn btn-success"> Login as speaker </a>
+      </div>
+
+    </div>
+
+    <div style="position: absolute; right: 20%">
+      <div id="role-box">
+        <h2> Are you an attendee? </h2>
+        <img src="<%= image_url 'human89.svg' %>" style="width: 200px"><br><br>
+        <a id="lg-btn" href="#/login-attendee" class="btn btn-success"> Login as attendee </a>
+      </div>
+
+    </div>
 
 </div>

@@ -44,6 +44,10 @@ body {
     padding: 9px 23px;
 }
 
+#lg-btn {
+
+}
+
 a {
   -webkit-transition: 300ms;
   -moz-transition: 300ms;
@@ -103,7 +107,7 @@ h2 {
 }
 
 .home{
-    min-height: calc(100vh - 50px);
+    min-height: calc(100vh - 150px);
     width: 100%;
 }
 
