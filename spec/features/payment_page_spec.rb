@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'stripe_mock'
 require 'stripe/errors/card_error'
 
 describe 'Payment page' , :js => true do
