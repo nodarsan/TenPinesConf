@@ -16,9 +16,14 @@ describe 'Login page' , :js => true do
     expect(page).to have_content('Login as attendee')
   end
 
-  it 'should contains the title of login page' do
+  it 'should contains the title of speaker login page' do
     visit '#/login-speaker'
     expect(page).to have_content('Login as speaker:')
+  end
+
+  it 'should contains the title of attendee login page' do
+    visit '#/login-attendee'
+    expect(page).to have_content('Login as attendee:')
   end
 
   it 'should be ok, if santi sign in he could look your proposed talks' do
