@@ -19,6 +19,7 @@ describe 'Payment page' , :js => true do
     fill_in '/', with:year
     error = accept_alert do
       click_button 'Submit Payment'
+      sleep(1)
     end
     expect(error).to eq(error_message)
   end
