@@ -1,0 +1,48 @@
+<div>
+  <div id="section" class="container" style="text-align: center" >
+    <div id="header">
+      <h1>Register as attendee</h1>
+    </div>
+    <form name="attendeeRegistrationForm" ng-submit="submitRegistration()">
+      <fieldset>
+        <h3>Login Information</h3>
+        <div class="form-group">
+          <label>
+            Your Mail:
+            <input type="email" ng-model="attendeeRegistrationData.mail" name="mail" required class="form-control">
+            <div ng-show="attendeeRegistrationForm.mail.$dirty && attendeeRegistrationForm.mail.$invalid">
+              <br><span ng-show="attendeeRegistrationForm.mail.$error.email">Invalid: This is not a valid email.</span>
+            </div>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Your Password:
+            <input type="password" ng-model="attendeeRegistrationData.password" required class="form-control">
+          </label>
+        </div>
+        <h3>Personal Information</h3>
+        <div class="form-group">
+          <label>
+            Your Name:
+            <input type="text" ng-model="attendeeRegistrationData.name" required class="form-control">
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Your Phone:
+            <input type="text" ng-model="attendeeRegistrationData.phone" required class="form-control">
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            Your Country:
+            <input type="text" ng-model="attendeeRegistrationData.country" required class="form-control">
+          </label>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-default">
+      </fieldset>
+    </form>
+  </div>
+</div>

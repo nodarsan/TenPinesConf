@@ -13,7 +13,7 @@ describe SpeakerMailer do
     expect(ActionMailer::Base.deliveries.empty?).to be_falsey
   end
 
-  it 'should ' do
+  it 'should send an email to speaker email address' do
     expect(@mail.to).to eq([@talk.speaker.mail])
     expect(@mail.from).to eq(['notification@tenpinesconf.com'])
     expect(@mail.subject).to eq('10PinesConf - Gracias')

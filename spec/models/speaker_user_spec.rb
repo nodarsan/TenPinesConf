@@ -52,7 +52,7 @@ describe SpeakerUser do
           bio: 'Developer, apprentice, etc....' }
     end
 
-    it 'should be valid' do
+    it 'should not be valid' do
       speaker = Speaker.new(@example_speaker_data)
       user = SpeakerUser.new(email: @mail, password: @password, speaker: speaker)
       expect(user.valid?).to be_falsey

@@ -7,10 +7,11 @@ describe 'Register Talk Page', :js => true do
       create(:half_hour_duration)
       create(:agile_track)
 
-      visit '#/login'
+      visit '#/login-speaker'
       fill_in 'mail', with: 'snodar@10pines.com'
       fill_in 'pass', with: 'unaPassword'
       click_button 'Submit'
+      sleep(1)
     end
 
     it 'should show thank you message when submitting' do

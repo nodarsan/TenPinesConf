@@ -4,7 +4,8 @@ tenPinesConfApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/landing', {
-                templateUrl: 'template/landing_page.html'
+                templateUrl: 'template/landing_page.html',
+                controller: 'paymentCtrl'
             }).
             when('/talk-proposal', {
                 templateUrl: 'template/talk_proposal.html',
@@ -23,20 +24,37 @@ tenPinesConfApp.config(['$routeProvider',
                 controller: 'TalkEditionCtrl'
             }).
             when('/register', {
+                templateUrl: 'template/home_register_page.html'
+            }).
+            when('/register-speaker', {
                 templateUrl: 'template/register_page.html',
                 controller: 'SpeakerRegisterCtrl'
             }).
-            when('/login', {
-                templateUrl: 'template/login_page.html',
-                controller: 'LoginCtrl'
+            when('/register-attendee', {
+                templateUrl: 'template/register_attendee_page.html',
+                controller: 'attendeeRegisterCtrl'
             }).
-            when('/logout',{
+            when('/login', {
+                templateUrl: 'template/home_login_page.html'
+            }).
+            when('/login-speaker',{
+                templateUrl: 'template/login_speaker_page.html',
+                controller: 'loginSpeakerCtrl'
+            }).
+            when('/login-attendee', {
+                templateUrl: 'template/login_attendee_page.html',
+                controller: 'loginAttendeeCtrl'
+            }).
+            when('/logout', {
                 templateUrl: 'template/landing_page.html',
                 controller: 'LogOutCtrl'
             }).
+            when('/payment', {
+                templateUrl: 'template/payment.html',
+                controller: 'paymentCtrl'
+            }).
             otherwise({
-                redirectTo: '/landing',
-                controller: 'LoginCtrl'
+                redirectTo: '/landing'
             });
     }]);
 
