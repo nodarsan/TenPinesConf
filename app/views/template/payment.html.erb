@@ -6,6 +6,20 @@
 
        <div class="form-group">
          <label>
+           <span>Card Name:</span>
+           <input ng-model="name" type="text" size="30" data-stripe="name"/>
+         </label>
+       </div>
+
+       <div class="form-group">
+         <label>
+           <span> Billing address:</span>
+           <input ng-model="address" type="text" size="50" data-stripe="address"/>
+         </label>
+       </div>
+
+       <div class="form-group">
+         <label>
            <span>Card Number:</span>
            <input ng-model="cardNumber" type="text" size="20" data-stripe="number"/>
          </label>
