@@ -7,10 +7,10 @@ class PaymentController < ApplicationController
     token = params[:stripeToken]
     begin
       charge = Stripe::Charge.create(
-          :amount => 200,
+          :amount => 20000,
           :currency => 'usd',
           :card => token,
-          :description => 'testing'
+          :description => "Ticket: #{current_attendee_user.email}"
       )
     rescue Exception => e
       render plain: e.message, status: 500
