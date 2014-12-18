@@ -16,7 +16,7 @@ tenPinesConfServices.factory('talkRepository',['$http', '$resource', function($h
             return $http.get('talk/'+ id +'.json');
         },
         submitEdition: function(modifiedTalkData){
-            return $http.post('edit_talk', modifiedTalkData);
+            return $http.post('edit_talk.json', modifiedTalkData);
         }
     }
 }]);

@@ -16,21 +16,18 @@ class RegisterTalkController < ApplicationController
   end
 
   def edit
-    talk_id = params[:id]
-
-    if current_speaker_user.speaker.eql?(Talk.find(talk_id).speaker)
-      data = {
-          talk_track: TalkTrack.find_by_name(params[:track]),
-          talk_duration: TalkDuration.find_by_value(params[:duration]),
-          title: params[:title],
-          description: params[:description]
-      }
-      Talk.update(talk_id, data)
-      render plain: ''
+    talk_register = TalkRegister.new
+    begin
+      talk_register.edit_talk(current_speaker_user.speaker, params[:id], talk_edit_params)
+    rescue Exception => e
+      render plain: e.message, status: 401
     else
-      render plain: '', status: 401
+      render plain: ''
     end
   end
 
+  def talk_edit_params
+    params.permit(:id, :title, :description, :duration, :track)
+  end
 end
 
