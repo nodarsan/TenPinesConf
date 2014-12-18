@@ -1,4 +1,4 @@
-class AuthController < ApplicationController
+class SpeakerAuthController < ApplicationController
 
   def sign_up
     speaker_data = {
@@ -26,16 +26,6 @@ class AuthController < ApplicationController
     else
       render plain: '', status: 401
     end
-
-
-    # sign_in(@user) do |status|
-    #   if status.success?
-    #     current_user
-    #     render plain: ''
-    #   else
-    #     render plain: '', status: 401
-    #   end
-    # end
   end
 
   def logged_user
