@@ -7,6 +7,8 @@ tenPinesConfControllers.controller('paymentCtrl',['$scope', '$http',function($sc
     $scope.buyTicket = function(){
         Stripe.setPublishableKey('pk_test_WADN4tdKDvOZiy1VuHh3ArkB');
         Stripe.card.createToken({
+            name: $scope.name,
+            address_line1: $scope.address,
             number: $scope.cardNumber,
             cvc: $scope.cardCvc,
             exp_month: $scope.cardExpiryMonth,
