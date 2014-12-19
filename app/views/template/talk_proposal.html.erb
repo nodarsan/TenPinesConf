@@ -10,25 +10,25 @@
           <div class="form-group">
             <label>
               Title:
-              <input type="text" ng-model="newTalkData.talk.title" required class="form-control">
+              <input type="text" ng-model="newTalkData.title" required class="form-control">
             </label>
           </div>
           <div class="form-group">
             <label>
               Description:
-              <textarea ng-model="newTalkData.talk.description" required class="form-control"></textarea>
+              <textarea ng-model="newTalkData.description" required class="form-control"></textarea>
             </label>
           </div>
           <div class="form-group">
             <label>
               Track:
-              <select id="track" ng-model="newTalkData.talk.track" ng-options="track for track in talkConfigs.tracks" class="form-control"></select>
+              <select id="track" ng-model="newTalkData.track" ng-options="track for track in talkConfigs.tracks" class="form-control"></select>
             </label>
           </div>
           <div class="form-group">
             <label>
               Duration:
-              <select id="duration" ng-model="newTalkData.talk.duration" ng-options="duration for duration in talkConfigs.durations" class="form-control"></select>
+              <select id="duration" ng-model="newTalkData.duration" ng-options="duration for duration in talkConfigs.durations" class="form-control"></select>
             </label>
           </div>
           <input type="submit" value="Submit" class="btn btn-success">

@@ -8,9 +8,8 @@ tenPinesConfControllers.controller('TalkProposalCtrl', ['$scope', '$location', '
         talkRepository.getTalkConfigData().success(function(data) {
             $scope.talkConfigs = data;
             $scope.newTalkData = {
-                talk: {
-                    duration: $scope.talkConfigs.durations[0],
-                    track: $scope.talkConfigs.tracks[0]}};
+                duration: $scope.talkConfigs.durations[0],
+                track: $scope.talkConfigs.tracks[0]};
         });
 
         $scope.submitProposal = function () {
