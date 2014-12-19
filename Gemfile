@@ -31,6 +31,7 @@ gem 'spring',      group: :development
 
 gem 'rails_12factor'
 gem 'stripe'
+gem 'whenever', :require => false
 gem 'pg', group: :production
 
 group :test, :development do
