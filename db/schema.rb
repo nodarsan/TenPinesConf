@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218185717) do
+ActiveRecord::Schema.define(version: 20141219150327) do
 
   create_table "attendee_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -98,6 +98,19 @@ ActiveRecord::Schema.define(version: 20141218185717) do
   add_index "talks", ["speaker_id"], name: "index_talks_on_speaker_id", using: :btree
   add_index "talks", ["talk_duration_id"], name: "index_talks_on_talk_duration_id", using: :btree
   add_index "talks", ["talk_track_id"], name: "index_talks_on_talk_track_id", using: :btree
+
+  create_table "ticket_sales", force: true do |t|
+    t.string   "stripe_id"
+    t.string   "card_name"
+    t.string   "billing_address"
+    t.integer  "price"
+    t.integer  "last4"
+    t.integer  "attendee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ticket_sales", ["attendee_id"], name: "index_ticket_sales_on_attendee_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at",                     null: false
