@@ -8,12 +8,14 @@ class TicketCashier
     Stripe.api_key = STRIPE_PRIVATE_API_KEY
   end
 
+  ## Deberiamos avisar si se realiza o no la transacción.
   def charge_ticket_to(attendee, token)
     charge = Stripe::Charge.create(
-        :amount => TICKET_PRICE,
-        :currency => 'usd',
-        :card => token,
-        :description => "Ticket: #{attendee.mail}"
+        amount: TICKET_PRICE,
+        currency: 'usd',
+        card: token,
+        description: "Ticket: #{attendee.mail}",
+        capture: false
     )
     register_sale(charge, attendee)
     PurchaseMailer.purchase_mail(attendee).deliver
@@ -31,4 +33,30 @@ class TicketCashier
     }
     TicketSale.create!(sale_data)
   end
+
+  def capture_all_pending_tickets
+    pending_tickets = TicketSale.where(status: 'pending')
+    pending_tickets.each do |ticket|
+      begin
+        ticket.capture
+      rescue Stripe::InvalidRequestError  => e #Success exception
+        if e.message.eql?("Charge #{ticket.stripe_id} has already been captured.")
+          ticket.set_captured
+        else
+          retry_or_set_status_error(ticket)
+        end
+      else #Another error occurred
+        retry_or_set_status_error(ticket)
+      end
+    end
+  end
+
+  def retry_or_set_status_error(ticket)
+    if ticket.exceed_retry_limit?
+      ticket.set_error_status
+    else
+      ticket.sum_retry
+    end
+  end
+
 end
