@@ -4,4 +4,8 @@ tenPinesConfControllers.controller('loginSpeakerCtrl', ['$scope', '$location', '
             authentication.login_as_speaker($scope.email, $scope.password);
             $location.path('/landing');
         };
+
+        $scope.forgotPassword = function () {
+            authentication.forgot_password_speaker($scope.email);
+        };
 }]);
