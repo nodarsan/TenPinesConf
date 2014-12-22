@@ -7,14 +7,17 @@ class TicketSale < ActiveRecord::Base
     Stripe::Charge.retrieve(stripe_id).capture
   end
 
-  def set_captured
-    self.status = 'success'
+  def set_status(status)
+    self.status = status
     self.save!
   end
 
+  def set_captured
+    set_status('success')
+  end
+
   def set_error_status
-    self.status = 'error'
-    self.save!
+    set_status('error')
   end
 
   def sum_retry
