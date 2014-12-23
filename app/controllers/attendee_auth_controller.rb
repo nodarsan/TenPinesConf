@@ -47,7 +47,9 @@ class AttendeeAuthController < ApplicationController
   def new_password
     password = Devise.friendly_token
     email = params[:email]
-    if AttendeeUser.exists?(email: email)
+    user = AttendeeUser.find_by_email(email)
+    if not user.nil?
+      user.update!(password:password, password_confirmation:password)
       AdminMailer.deliver_new_password_mail(password,email)
       render plain: '', status: 200
     else
