@@ -9,6 +9,7 @@ describe 'Payment page' , :js => true do
     fill_in 'email', with:'mmelendi@10pines.com'
     fill_in 'password', with:'otraPassword'
     click_button 'Submit'
+    sleep 1
   end
 
   def on_submit_payment(card_number, cvc, month, year, error_message)
