@@ -19,12 +19,16 @@ class SpeakerAuthController < ApplicationController
   end
 
   def login
-    @user = SpeakerUser.find_by_email!(params[:email])
-    if @user.valid_password?(params[:password])
-      sign_in(@user)
-      render plain: "#{@user.email}"
-    else
-      render plain: '', status: 401
+    begin
+      @user = SpeakerUser.find_by_email!(params[:email])
+      if @user.valid_password?(params[:password])
+        sign_in(@user)
+        render plain: "#{@user.email}"
+      else
+        render plain: 'Email or password invalid.', status: 401
+      end
+    rescue Exception
+      render plain: 'Email or password invalid.', status: 401
     end
   end
 

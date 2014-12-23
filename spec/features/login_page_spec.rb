@@ -57,6 +57,26 @@ describe 'Login page' , :js => true do
     expect(page.text.upcase).to have_content('BUY TICKET')
   end
 
+  it 'should show message when entering wrong data as speaker' do
+    visit '#/login-speaker'
+    fill_in 'mail', with: 'cualquiera@10pines.com'
+    fill_in 'pass' , with: 'asd'
+    message = accept_alert do
+      click_button 'Submit'
+    end
+    expect(message).to eql('Email or password invalid.')
+  end
+
+  it 'should show message when entering wrong data as attendee' do
+    visit '#/login-attendee'
+    fill_in 'mail', with: 'cualquiera@10pines.com'
+    fill_in 'pass' , with: 'asd'
+    message = accept_alert do
+      click_button 'Submit'
+    end
+    expect(message).to eql('Email or password invalid.')
+  end
+
   it 'should send an email with a temporary password to speaker user´s account' do
     when_forgot_my_password_expect('#/login-speaker', 'snodar@10pines.com', 'Your new password has been sent to your email account!')
   end
