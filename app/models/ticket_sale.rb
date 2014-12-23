@@ -5,6 +5,7 @@ class TicketSale < ActiveRecord::Base
 
   def capture
     Stripe::Charge.retrieve(stripe_id).capture
+    self.set_captured
   end
 
   def set_status(status)

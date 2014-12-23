@@ -39,18 +39,13 @@ class TicketCashier
     pending_tickets.each do |ticket|
       begin
         ticket.capture
-      rescue Stripe::InvalidRequestError  => e #Success exception
-        if e.message.eql?("Charge #{ticket.stripe_id} has already been captured.")
-          ticket.set_captured
-        else
-          retry_or_set_status_error(ticket)
-        end
-      else #Another error occurred
+      rescue
         retry_or_set_status_error(ticket)
       end
     end
   end
 
+  private
   def retry_or_set_status_error(ticket)
     if ticket.exceed_retry_limit?
       ticket.set_error_status
