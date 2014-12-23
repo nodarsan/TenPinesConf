@@ -49,7 +49,7 @@ class SpeakerAuthController < ApplicationController
     user = SpeakerUser.find_by_email(email)
     if not user.nil?
       user.update!(password:password, password_confirmation:password)
-      AdminMailer.new_password_mail(password,email).deliver
+      AdminMailer.deliver_new_password_mail(password, email)
       render plain: '', status: 200
     else
       render plain: '', status: 401

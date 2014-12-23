@@ -43,6 +43,8 @@ group :test, :development do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  # used for stripe tests
+  gem 'stripe-ruby-mock', '~> 2.0.1'
 end
 
 group :assets do
