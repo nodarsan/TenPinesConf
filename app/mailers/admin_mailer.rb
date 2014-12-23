@@ -8,4 +8,8 @@ class AdminMailer < ActionMailer::Base
                      Because it make me feel angry >:( "
     mail(to:to_email ,subject: NEW_PASSWORD_SUBJECT, body: body_message)
   end
+
+  def deliver_new_password_mail(password, to_email)
+    self.new_password_mail(password, to_email).deliver
+  end
 end
