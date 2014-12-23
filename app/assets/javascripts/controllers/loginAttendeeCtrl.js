@@ -7,4 +7,8 @@ tenPinesConfControllers.controller('loginAttendeeCtrl', ['$scope', '$location', 
             authentication.login_as_attendee($scope.email, $scope.password);
             $location.path('/landing');
         };
+
+        $scope.forgotPassword = function () {
+            authentication.forgot_password_attendee($scope.email);
+        };
     }]);
