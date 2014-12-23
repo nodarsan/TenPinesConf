@@ -17,12 +17,16 @@ class AttendeeAuthController < ApplicationController
   end
 
   def login
-    @user = AttendeeUser.find_by_email!(params[:email])
-    if @user.valid_password?(params[:password])
-      sign_in(@user)
-      render plain: "#{@user.email}"
-    else
-      render plain: '', status: 401
+    begin
+      @user = AttendeeUser.find_by_email!(params[:email])
+      if @user.valid_password?(params[:password])
+        sign_in(@user)
+        render plain: "#{@user.email}"
+      else
+        render plain: 'Email or password invalid.', status: 401
+      end
+    rescue Exception
+      render plain: 'Email or password invalid.', status: 401
     end
   end
 
@@ -38,5 +42,16 @@ class AttendeeAuthController < ApplicationController
   def logout
     sign_out(current_attendee_user)
     render plain: ''
+  end
+
+  def new_password
+    password = Devise.friendly_token
+    email = params[:email]
+    if AttendeeUser.exists?(email: email)
+      AdminMailer.deliver_new_password_mail(password,email)
+      render plain: '', status: 200
+    else
+      render plain: '', status: 401
+    end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219150327) do
+ActiveRecord::Schema.define(version: 20141219194948) do
 
   create_table "attendee_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 20141219150327) do
     t.integer  "attendee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",          default: "pending"
+    t.integer  "retry",           default: 0
   end
 
   add_index "ticket_sales", ["attendee_id"], name: "index_ticket_sales_on_attendee_id", using: :btree

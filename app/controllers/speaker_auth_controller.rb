@@ -19,12 +19,16 @@ class SpeakerAuthController < ApplicationController
   end
 
   def login
-    @user = SpeakerUser.find_by_email!(params[:email])
-    if @user.valid_password?(params[:password])
-      sign_in(@user)
-      render plain: "#{@user.email}"
-    else
-      render plain: '', status: 401
+    begin
+      @user = SpeakerUser.find_by_email!(params[:email])
+      if @user.valid_password?(params[:password])
+        sign_in(@user)
+        render plain: "#{@user.email}"
+      else
+        render plain: 'Email or password invalid.', status: 401
+      end
+    rescue Exception
+      render plain: 'Email or password invalid.', status: 401
     end
   end
 
@@ -40,6 +44,20 @@ class SpeakerAuthController < ApplicationController
   def logout
     sign_out(current_speaker_user)
     render plain: ''
+  end
+
+
+  def new_password
+    password = Devise.friendly_token
+    email = params[:email]
+    user = SpeakerUser.find_by_email(email)
+    if not user.nil?
+      user.update!(password:password, password_confirmation:password)
+      AdminMailer.deliver_new_password_mail(password, email)
+      render plain: '', status: 200
+    else
+      render plain: '', status: 401
+    end
   end
 
 end

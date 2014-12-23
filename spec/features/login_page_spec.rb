@@ -9,6 +9,17 @@ describe 'Login page' , :js => true do
     create(:interesting_talk)
   end
 
+  def when_forgot_my_password_expect(page, email, msg)
+    visit page
+    click_link 'Forgot your password?'
+    fill_in 'email', with: email
+    message = accept_alert do
+      click_button 'Submit'
+      sleep 1
+    end
+    expect(message).to eq(msg)
+  end
+
   it 'should redirect to login home page' do
     visit '#/home'
     click_link 'Login'
@@ -46,5 +57,42 @@ describe 'Login page' , :js => true do
     expect(page.text.upcase).to have_content('BUY TICKET')
   end
 
+  it 'should show message when entering wrong data as speaker' do
+    visit '#/login-speaker'
+    fill_in 'mail', with: 'cualquiera@10pines.com'
+    fill_in 'pass' , with: 'asd'
+    message = accept_alert do
+      click_button 'Submit'
+    end
+    expect(message).to eql('Email or password invalid.')
+  end
+
+  it 'should show message when entering wrong data as attendee' do
+    visit '#/login-attendee'
+    fill_in 'mail', with: 'cualquiera@10pines.com'
+    fill_in 'pass' , with: 'asd'
+    message = accept_alert do
+      click_button 'Submit'
+    end
+    expect(message).to eql('Email or password invalid.')
+  end
+
+  it 'should send an email with a temporary password to speaker user´s account' do
+    when_forgot_my_password_expect('#/login-speaker', 'snodar@10pines.com', 'Your new password has been sent to your email account!')
+  end
+
+  it 'should send an email with a temporary password to attendee user´s account' do
+    when_forgot_my_password_expect('#/login-attendee', 'mmelendi@10pines.com', 'Your new password has been sent to your email account!')
+  end
+
+  it 'should raise an error message because the user is not register' do
+    when_forgot_my_password_expect('#/login-attendee', 'false-email@falsey.com',
+                                   'An error occurred, check the email has correctly written and retry')
+  end
+
+  it 'should raise an error message because the user is not register' do
+    when_forgot_my_password_expect('#/login-speaker', 'false-email@falsey.com',
+                                   'An error occurred, check the email has correctly written and retry')
+  end
 
 end
