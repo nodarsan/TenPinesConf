@@ -61,6 +61,14 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/forgot_password_page.html' ,
                 controller: 'loginAttendeeCtrl'
             }).
+            when('/speaker-user-profile', {
+                templateUrl: 'template/user_profile.html' ,
+                controller: 'loginSpeakerCtrl'
+            }).
+            when('/attendee-user-profile', {
+                templateUrl: 'template/user_profile.html' ,
+                controller: 'loginAttendeeCtrl'
+            }).
             otherwise({
                 redirectTo: '/landing'
             });
