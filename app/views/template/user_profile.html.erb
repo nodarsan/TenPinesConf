@@ -12,9 +12,14 @@
 
     </div>
 
-    <div class="container" align="left" id="change-password">
+    <div class="container" align="left" ng-show="logged_in_as_speaker" id="change-password">
       <h3> Edit your personal information </h3>
-      <p> If forgot your password, don't forget to change it: <a href="/#change-password"> Change your password! </a></p>
+      <p> If forgot your password, don't forget to change it: <a href="/#speaker-change-password"> Change your password! </a></p>
+    </div>
+
+    <div class="container" align="left" ng-show="logged_in_as_attendee" id="change-password">
+      <h3> Edit your personal information </h3>
+      <p> If forgot your password, don't forget to change it: <a href="/#attendee-change-password"> Change your password! </a></p>
     </div>
   </div>
 
