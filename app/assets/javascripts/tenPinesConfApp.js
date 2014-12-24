@@ -77,7 +77,6 @@ tenPinesConfApp.config(['$routeProvider',
                 templateUrl: 'template/change_password.html' ,
                 controller: 'loginSpeakerCtrl'
             }).
-
             otherwise({
                 redirectTo: '/landing'
             });

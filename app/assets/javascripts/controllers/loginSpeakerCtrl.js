@@ -12,4 +12,13 @@ tenPinesConfControllers.controller('loginSpeakerCtrl', ['$scope', '$location', '
         $scope.forgotPassword = function () {
             authentication.forgot_password_speaker($scope.email);
         };
+        $scope.changePassword = function() {
+            authentication.change_password_speaker($scope.currentPassword, $scope.newPassword, $scope.repeatNewPassword)
+                .success(function() {
+                    alert('Password changed successfully.')
+                })
+                .error(function() {
+                    alert('Password could not be changed.')
+                })
+        }
 }]);

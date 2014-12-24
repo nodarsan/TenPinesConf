@@ -69,6 +69,22 @@ tenPinesConfServices.factory('authentication',['$http', '$rootScope', '$q', func
         },
         forgot_password_attendee: function(email) {
             forgot_password('/forgot_password_attendee', email);
+        },
+        change_password_speaker: function(current_password, new_password, repeat_new_password){
+            var data = {
+                current_password: current_password,
+                new_password: new_password,
+                repeat_new_password: repeat_new_password
+            };
+            return $http.post('/edit_password_speaker.json', data);
+        },
+        change_password_attendee: function(current_password, new_password, repeat_new_password){
+            var data = {
+                current_password: current_password,
+                new_password: new_password,
+                repeat_new_password: repeat_new_password
+            };
+            return $http.post('/edit_password_speaker.json', data);
         }
     }
 }]);

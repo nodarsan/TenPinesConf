@@ -61,7 +61,10 @@ class SpeakerAuthController < ApplicationController
   end
 
   def edit_password
-    current_speaker_user.update!(password: params[:password], password_confirmation: params[:password])
+    if current_speaker_user.valid_password?(params[:current_password])
+      current_speaker_user.update!(password: params[:new_password], password_confirmation: params[:repeat_new_password])
+    end
+    render plain: '', status: 200
   end
 
 end

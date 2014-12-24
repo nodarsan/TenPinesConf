@@ -58,6 +58,9 @@ class AttendeeAuthController < ApplicationController
   end
 
   def edit_password
-    current_attendee_user.update!(password: params[:password], password_confirmation: params[:password])
+    if current_attendee_user.valid_password?(params[:current_password])
+      current_attendee_user.update!(password: params[:new_password], password_confirmation: params[:repeat_new_password])
+    end
+    render plain: '', status: 200
   end
 end
