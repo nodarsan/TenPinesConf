@@ -1,19 +1,20 @@
 <div class="container">
 
   <div id="header">
-    <h1> Your Profile </h1>
+    <h1 align="center"> Your Profile </h1>
   </div>
 
   <div id="section" align="center" >
 
-    <div class="container" id="user-data">
-        <a>User: {{ user_email }}</a>
+    <div class="container" align="left" id="user-data">
+        <h3> User information </h3>
+        <a style="text-align: left"> User: {{ user_email }} </a>
 
     </div>
 
-    <div class="container" id="change-password">
-      <h2> If forgot your password, don't forget to change it: </h2>
-      <a href="/#change-password"> Change your password! </a>
+    <div class="container" align="left" id="change-password">
+      <h3> Edit your personal information </h3>
+      <p> If forgot your password, don't forget to change it: <a href="/#change-password"> Change your password! </a></p>
     </div>
   </div>
 
