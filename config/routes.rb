@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   post 'register_attendee' => 'attendee_auth#sign_up'
   post 'forgot_password_speaker' => 'speaker_auth#new_password'
   post 'forgot_password_attendee' => 'attendee_auth#new_password'
+  post 'edit_password_speaker' => 'speaker_auth#edit_password'
+  post 'edit_password_attendee' => 'attendee_auth#edit_password'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

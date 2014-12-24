@@ -60,4 +60,8 @@ class SpeakerAuthController < ApplicationController
     end
   end
 
+  def edit_password
+    current_speaker_user.update!(password: params[:password], password_confirmation: params[:password])
+  end
+
 end

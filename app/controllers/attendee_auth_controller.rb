@@ -56,4 +56,8 @@ class AttendeeAuthController < ApplicationController
       render plain: '', status: 401
     end
   end
+
+  def edit_password
+    current_attendee_user.update!(password: params[:password], password_confirmation: params[:password])
+  end
 end
