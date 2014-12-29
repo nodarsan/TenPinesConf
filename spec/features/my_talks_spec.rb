@@ -18,6 +18,7 @@ describe 'My talks list for current user', :js => true do
     select '30', from: 'duration'
     accept_alert do
       click_button 'Submit'
+      sleep(1)
     end
   end
 
